@@ -1,28 +1,8 @@
 import ProductCard from "./ProductCard";
+import { products } from "../data/products";
 
 export default function Products() {
-  const products = [
 
-  {
-    title: "Non-Woven Loop Handle Bag",
-
-    description:
-      "Premium reusable shopping bags with strong stitched loop handles for retail stores and branding.",
-
-    image: "/images/maroon-bag.jpeg",
-  },
-
-  {
-    title: "Metallic Laminated Bag",
-
-    description:
-      "Luxury metallic laminated bags with premium finish for boutiques, garments and gift packaging.",
-
-    image: "/images/golden-metallic-bag.jpeg",
-  },
-
-
-];
 
   return (
     <section className="products-section" id="products">
@@ -38,10 +18,12 @@ export default function Products() {
       <div className="products-grid">
         {products.map((product) => (
           <ProductCard
-  key={product.title}
+  key={product.slug}
+  slug={product.slug}
   title={product.title}
   description={product.description}
   image={product.image}
+  sizeOptions={product.sizeOptions}
 />
         ))}
       </div>

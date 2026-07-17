@@ -1,15 +1,28 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type ProductCardProps = {
   title: string;
   description: string;
   image?: string;
+  slug: string;
+  sizeOptions: {
+    size: string;
+    quotations: {
+      gsm: number;
+      quantity: number;
+      capacity: string;
+      pricePerBag: number;
+    }[];
+  }[];
 };
 
 export default function ProductCard({
   title,
   description,
   image,
+  slug,
+  sizeOptions,
 }: ProductCardProps) {
   return (
     <article className="product-card">
@@ -32,11 +45,22 @@ export default function ProductCard({
 
       <div className="product-card-content">
         <h3>{title}</h3>
+
         <p>{description}</p>
 
-        <button type="button" className="product-button">
+        <div className="product-sizes">
+          <p>Available Sizes</p>
+
+          <div className="size-list">
+            {sizeOptions.map((item) => (
+              <span key={item.size}>{item.size}</span>
+            ))}
+          </div>
+        </div>
+
+        <Link href={`/products/${slug}`} className="product-button">
           View Details <span>→</span>
-        </button>
+        </Link>
       </div>
     </article>
   );
