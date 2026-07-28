@@ -20,7 +20,7 @@ export default function Navbar() {
         <a href="#industries">Industries</a>
         <a href="#gallery">Gallery</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact">Contact us</a>
       </nav>
 
       <a

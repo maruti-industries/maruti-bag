@@ -22,7 +22,7 @@ export default function Footer() {
         <div className="footer-contact">
           <h3>Contact</h3>
           <p>Surat, Gujarat, India</p>
-          <p>+91 XXXXXXXXXX</p>
+          <p>+91 9427171799</p>
           <p>info@marutibag.com</p>
         </div>
       </div>
