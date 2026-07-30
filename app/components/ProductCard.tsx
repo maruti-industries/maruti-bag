@@ -6,13 +6,20 @@ type ProductCardProps = {
   description: string;
   image?: string;
   slug: string;
+
   sizeOptions: {
     size: string;
+
+    availableColors?: {
+      colorId: string;
+      image: string;
+    }[];
+
     quotations: {
       gsm: number;
-      quantity: number;
+      quantity: number | null;
       capacity: string;
-      pricePerBag: number;
+      pricePerBag: number | null;
     }[];
   }[];
 };
@@ -24,6 +31,16 @@ export default function ProductCard({
   slug,
   sizeOptions,
 }: ProductCardProps) {
+  const gsmOptions = Array.from(
+    new Set(
+      sizeOptions.flatMap((sizeOption) =>
+        sizeOption.quotations.map((quotation) => quotation.gsm),
+      ),
+    ),
+  );
+
+  const colourCount = sizeOptions[0]?.availableColors?.length ?? 0;
+
   return (
     <article className="product-card">
       <div className="product-card-image">
@@ -44,6 +61,12 @@ export default function ProductCard({
       </div>
 
       <div className="product-card-content">
+        {gsmOptions.length > 0 && (
+          <span className="product-gsm">
+            {gsmOptions.map((gsm) => `${gsm} GSM`).join(" • ")}
+          </span>
+        )}
+
         <h3>{title}</h3>
 
         <p>{description}</p>
@@ -57,6 +80,12 @@ export default function ProductCard({
             ))}
           </div>
         </div>
+
+        {colourCount > 0 && (
+          <div className="product-card-colour-count">
+            {colourCount} colours available in every size
+          </div>
+        )}
 
         <Link href={`/products/${slug}`} className="product-button">
           View Details <span>→</span>

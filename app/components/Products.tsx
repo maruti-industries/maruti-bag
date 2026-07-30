@@ -2,8 +2,6 @@ import ProductCard from "./ProductCard";
 import { products } from "../data/products";
 
 export default function Products() {
-
-
   return (
     <section className="products-section" id="products">
       <div className="section-heading">
@@ -18,13 +16,13 @@ export default function Products() {
       <div className="products-grid">
         {products.map((product) => (
           <ProductCard
-  key={product.slug}
-  slug={product.slug}
-  title={product.title}
-  description={product.description}
-  image={product.image}
-  sizeOptions={product.sizeOptions}
-/>
+            key={product.slug}
+            slug={product.slug}
+            title={product.title}
+            description={product.description}
+            image={product.image}
+            sizeOptions={product.sizeOptions}
+          />
         ))}
       </div>
     </section>

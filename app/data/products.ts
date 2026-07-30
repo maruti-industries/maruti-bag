@@ -1,15 +1,92 @@
 export const products = [
   {
-    slug: "non-woven-loop-handle-bag",
-    title: "Non-Woven Loop Handle Bag",
-    image: "/images/maroon-bag.jpeg",
+    slug: "non-woven-box-bag",
+    title: "Non-Woven Box Bag",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-baby-pink.png",
 
     description:
-      "Durable non-woven loop handle bags suitable for retail stores, garments, gifting and everyday packaging requirements.",
+      "Durable 75 GSM non-woven box bags with strong loop handles, suitable for retail stores, garments, gifting and everyday packaging requirements.",
+
+    colorCatalog: {
+      "baby-pink": {
+        id: "baby-pink",
+        label: "Baby Pink",
+        hex: "#F4B6C2",
+      },
+      black: {
+        id: "black",
+        label: "Black",
+        hex: "#171717",
+      },
+      white: {
+        id: "white",
+        label: "White",
+        hex: "#FFFFFF",
+      },
+      red: {
+        id: "red",
+        label: "Red",
+        hex: "#D62828",
+      },
+      ivory: {
+        id: "ivory",
+        label: "Ivory",
+        hex: "#FFFFF0",
+      },
+      "lemon-yellow": {
+        id: "lemon-yellow",
+        label: "Lemon Yellow",
+        hex: "#FFF44F",
+      },
+      "golden-yellow": {
+        id: "golden-yellow",
+        label: "Golden Yellow",
+        hex: "#F5B700",
+      },
+      "reliance-green": {
+        id: "reliance-green",
+        label: "Reliance Green",
+        hex: "#138A4B",
+      },
+    },
 
     sizeOptions: [
       {
         size: "10×12+4",
+        availableColors: [
+  {
+    colorId: "baby-pink",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-baby-pink.png",
+  },
+  {
+    colorId: "black",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-black.png",
+  },
+  {
+    colorId: "white",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-white.png",
+  },
+  {
+    colorId: "red",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-red.png",
+  },
+  {
+    colorId: "ivory",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-ivory.png",
+  },
+  {
+    colorId: "lemon-yellow",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-lemon-yellow.png",
+  },
+  {
+    colorId: "golden-yellow",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-golden-yellow.png",
+  },
+  {
+    colorId: "reliance-green",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-reliance-green.png",
+  },
+],
         quotations: [
           {
             gsm: 75,
@@ -17,16 +94,44 @@ export const products = [
             capacity: "Approx. 1–2 kg",
             pricePerBag: 18,
           },
-          {
-            gsm: 90,
-            quantity: 3000,
-            capacity: "Approx. 1–2 kg",
-            pricePerBag: 20,
-          },
         ],
       },
       {
         size: "12×14+4",
+        availableColors: [
+  {
+    colorId: "baby-pink",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-baby-pink.png",
+  },
+  {
+    colorId: "black",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-black.png",
+  },
+  {
+    colorId: "white",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-white.png",
+  },
+  {
+    colorId: "red",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-red.png",
+  },
+  {
+    colorId: "ivory",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-ivory.png",
+  },
+  {
+    colorId: "lemon-yellow",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-lemon-yellow.png",
+  },
+  {
+    colorId: "golden-yellow",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-golden-yellow.png",
+  },
+  {
+    colorId: "reliance-green",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-reliance-green.png",
+  },
+],
         quotations: [
           {
             gsm: 75,
@@ -34,16 +139,44 @@ export const products = [
             capacity: "Approx. 2–3 kg",
             pricePerBag: 21,
           },
-          {
-            gsm: 90,
-            quantity: 3000,
-            capacity: "Approx. 2–3 kg",
-            pricePerBag: 23,
-          },
         ],
       },
       {
         size: "15×12+4",
+        availableColors: [
+  {
+    colorId: "baby-pink",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-baby-pink.png",
+  },
+  {
+    colorId: "black",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-black.png",
+  },
+  {
+    colorId: "white",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-white.png",
+  },
+  {
+    colorId: "red",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-red.png",
+  },
+  {
+    colorId: "ivory",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-ivory.png",
+  },
+  {
+    colorId: "lemon-yellow",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-lemon-yellow.png",
+  },
+  {
+    colorId: "golden-yellow",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-golden-yellow.png",
+  },
+  {
+    colorId: "reliance-green",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-reliance-green.png",
+  },
+],
         quotations: [
           {
             gsm: 75,
@@ -51,28 +184,95 @@ export const products = [
             capacity: "Approx. 3–4 kg",
             pricePerBag: 24,
           },
+        ],
+      },
+      {
+        size: "14×16.5+4",
+        availableColors: [
+  {
+    colorId: "baby-pink",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-baby-pink.png",
+  },
+  {
+    colorId: "black",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-black.png",
+  },
+  {
+    colorId: "white",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-white.png",
+  },
+  {
+    colorId: "red",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-red.png",
+  },
+  {
+    colorId: "ivory",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-ivory.png",
+  },
+  {
+    colorId: "lemon-yellow",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-lemon-yellow.png",
+  },
+  {
+    colorId: "golden-yellow",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-golden-yellow.png",
+  },
+  {
+    colorId: "reliance-green",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-reliance-green.png",
+  },
+],
+        quotations: [
           {
-            gsm: 90,
-            quantity: 2000,
-            capacity: "Approx. 3–4 kg",
-            pricePerBag: 26,
+            gsm: 75,
+            quantity: null,
+            capacity: "Approx. 4–5 kg",
+            pricePerBag: null,
           },
         ],
       },
       {
         size: "17×14+5",
+        availableColors: [
+  {
+    colorId: "baby-pink",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-baby-pink.png",
+  },
+  {
+    colorId: "black",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-black.png",
+  },
+  {
+    colorId: "white",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-white.png",
+  },
+  {
+    colorId: "red",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-red.png",
+  },
+  {
+    colorId: "ivory",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-ivory.png",
+  },
+  {
+    colorId: "lemon-yellow",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-lemon-yellow.png",
+  },
+  {
+    colorId: "golden-yellow",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-golden-yellow.png",
+  },
+  {
+    colorId: "reliance-green",
+    image: "/images/non-woven-box-bag/non-woven-box-bag-reliance-green.png",
+  },
+],
         quotations: [
           {
             gsm: 75,
             quantity: 3000,
             capacity: "Approx. 4–5 kg",
             pricePerBag: 28,
-          },
-          {
-            gsm: 90,
-            quantity: 2000,
-            capacity: "Approx. 4–5 kg",
-            pricePerBag: 30,
           },
         ],
       },
@@ -81,7 +281,7 @@ export const products = [
     features: [
       "Strong loop handles",
       "Reusable and lightweight",
-      "Durable structure",
+      "Durable box-shaped structure",
       "Custom printing available",
     ],
 
@@ -105,27 +305,27 @@ export const products = [
       "Customer logo printing",
       "Custom artwork creation",
       "Design support for customers without a logo",
-      "Custom colours and branding",
+      "Eight ready colour options",
     ],
 
     sampleDesigns: [
-      {
-        title: "Jewellery Bag Design",
-        image: "/images/maroon-bag.jpeg",
-      },
-      {
-        title: "Sweet Shop Bag Design",
-        image: "/images/maroon-bag.jpeg",
-      },
-      {
-        title: "Agriculture Bag Design",
-        image: "/images/maroon-bag.jpeg",
-      },
-      {
-        title: "Garment Store Bag Design",
-        image: "/images/maroon-bag.jpeg",
-      },
-    ],
+  {
+    title: "Jewellery Bag Design",
+    image: "/images/sample-designs/jewellery-bag-design.png",
+  },
+  {
+    title: "Sweet Shop Bag Design",
+    image: "/images/sample-designs/sweet-shop-bag-design.png",
+  },
+  {
+    title: "Agriculture Bag Design",
+    image: "/images/sample-designs/agriculture-bag-design.png",
+  },
+  {
+    title: "Garment Store Bag Design",
+    image: "/images/sample-designs/garment-store-bag-design.png",
+  },
+],
   },
 
   {
