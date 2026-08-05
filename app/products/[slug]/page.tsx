@@ -1,5 +1,8 @@
 "use client";
 
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import RelatedProducts from "../../components/RelatedProducts";
 import { Fragment, useRef, useState } from "react";
 import Image from "next/image";
 import { notFound, useParams } from "next/navigation";
@@ -258,11 +261,16 @@ export default function ProductPage() {
 
   const product = products.find((item) => item.slug === slug);
 
-  if (!product) {
-    notFound();
-  }
+if (!product) {
+  notFound();
+}
 
-  const variantProduct = product as VariantProduct;
+/* Other products, excluding the product currently open */
+const relatedProducts = products
+  .filter((item) => item.slug !== product.slug)
+  .slice(0, 3);
+
+const variantProduct = product as VariantProduct;
   const firstSizeOption = variantProduct.sizeOptions[0];
   const firstColorId = firstSizeOption?.availableColors?.[0]?.colorId ?? "";
 
@@ -372,7 +380,10 @@ Please share availability and quotation.`;
   ];
 
   return (
-    <main className="product-detail-page">
+    <>
+      <Navbar />
+
+      <main className="product-detail-page">
       <div className="product-detail-container">
         <div className="product-detail-image">
           <Image
@@ -711,88 +722,7 @@ Please share availability and quotation.`;
           </div>
         </section>
 
-        <section className="product-detail-grid">
-          <div className="product-info-box">
-            <h2>Key Features</h2>
-            <ul>
-              {product.features.map((feature) => (
-                <li key={feature}>
-                  <span aria-hidden="true">✓</span>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="product-info-box">
-            <h2>Applications</h2>
-            <ul>
-              {product.applications.map((application) => (
-                <li key={application}>
-                  <span aria-hidden="true">✓</span>
-                  {application}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="product-info-box">
-            <h2>Customization Options</h2>
-            <ul>
-              {product.customizationOptions.map((option) => (
-                <li key={option}>
-                  <span aria-hidden="true">✓</span>
-                  {option}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="product-info-box">
-            <h2>Industries We Serve</h2>
-            <ul>
-              {product.industries.map((industry) => (
-                <li key={industry}>
-                  <span aria-hidden="true">✓</span>
-                  {industry}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {product.sampleDesigns.length > 0 && (
-          <section className="product-section sample-design-section">
-            <div className="product-section-heading compact-heading">
-              <span>Design Inspiration</span>
-              <h2>Explore Sample Bag Concepts</h2>
-              <p>
-                These are shown for inspiration. Your final bag can be customized with your own branding and artwork.
-              </p>
-            </div>
-
-            <div className="sample-design-grid">
-              {product.sampleDesigns.map((design) => (
-  <article className="sample-design-card" key={design.title}>
-    <div className="sample-design-image-wrapper">
-      <Image
-        src={design.image}
-        alt={design.title}
-        width={700}
-        height={700}
-        className="sample-design-image"
-      />
-    </div>
-
-    <div className="sample-design-content">
-      <h3>{design.title}</h3>
-      <p>Custom branding and artwork can be created for your business.</p>
-    </div>
-  </article>
-))}
-            </div>
-          </section>
-        )}
+        <RelatedProducts products={relatedProducts} />
 
         <ProductFaqAccordion />
 
@@ -809,6 +739,9 @@ Please share availability and quotation.`;
           </a>
         </section>
       </div>
-    </main>
+      </main>
+
+      <Footer />
+    </>
   );
 }

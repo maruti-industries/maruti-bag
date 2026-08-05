@@ -1,10 +1,43 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+const BUSINESS_WHATSAPP_URL = "https://wa.me/919427152052";
 
 export default function Navbar() {
-  return (
-    <header className="navbar">
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-      <div className="logo">
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 24);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  return (
+    <header className={`navbar ${isScrolled ? "navbar-scrolled" : ""}`}>
+      <Link
+        href="/"
+        className="navbar-logo"
+        onClick={closeMenu}
+        aria-label="Maruti Bag home"
+      >
         <Image
           src="/images/Latest Logo.png"
           alt="Maruti Bag"
@@ -12,25 +45,68 @@ export default function Navbar() {
           height={60}
           priority
         />
-      </div>
+      </Link>
 
-      <nav className="nav-links">
-        <a href="#">Home</a>
-        <a href="#products">Products</a>
-        <a href="#industries">Industries</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact us</a>
+      <nav
+  id="primary-navigation"
+  className={`nav-links ${isMenuOpen ? "nav-links-open" : ""}`}
+  aria-label="Primary navigation"
+>
+        <Link href="/" onClick={closeMenu}>
+          Home
+        </Link>
+
+        <Link href="/#products" onClick={closeMenu}>
+          Products
+        </Link>
+
+        <Link href="/#industries" onClick={closeMenu}>
+          Industries
+        </Link>
+
+        <Link href="/#gallery" onClick={closeMenu}>
+  Gallery
+</Link>
+
+        <Link href="/#about" onClick={closeMenu}>
+          About
+        </Link>
+
+        <Link href="/#contact" onClick={closeMenu}>
+          Contact
+        </Link>
       </nav>
 
-      <a
-        href="https://wa.me/919574624260"
-        className="quote-btn"
-        target="_blank"
-      >
-        Get Quote
-      </a>
+      <div className="navbar-actions">
+        <a
+          href={BUSINESS_WHATSAPP_URL}
+          className="quote-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Get Quote
+          <span aria-hidden="true">→</span>
+        </a>
 
+        <button
+          type="button"
+          className={`navbar-menu-button ${
+            isMenuOpen ? "navbar-menu-button-open" : ""
+          }`}
+          onClick={() => {
+            setIsMenuOpen((current) => !current);
+          }}
+          aria-label={
+            isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
+          aria-expanded={isMenuOpen}
+          aria-controls="primary-navigation"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
     </header>
   );
 }

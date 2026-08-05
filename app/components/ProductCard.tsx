@@ -43,53 +43,74 @@ export default function ProductCard({
 
   return (
     <article className="product-card">
-      <div className="product-card-image">
-        {image ? (
-          <Image
-            src={image}
-            alt={title}
-            width={700}
-            height={500}
-            className="product-image"
-          />
-        ) : (
-          <div className="product-placeholder">
-            <span>MARUTI BAG</span>
-            <strong>Product Photo Coming Soon</strong>
-          </div>
-        )}
-      </div>
+      <Link
+        href={`/products/${slug}`}
+        className="product-card-image-link"
+        aria-label={`View ${title}`}
+      >
+        <div className="product-card-image">
+          {image ? (
+            <Image
+              src={image}
+              alt={title}
+              width={760}
+              height={620}
+              className="product-image"
+            />
+          ) : (
+            <div className="product-placeholder">
+              <span>MARUTI BAG</span>
+              <strong>Product Photo Coming Soon</strong>
+            </div>
+          )}
 
-      <div className="product-card-content">
-        {gsmOptions.length > 0 && (
-          <span className="product-gsm">
-            {gsmOptions.map((gsm) => `${gsm} GSM`).join(" • ")}
-          </span>
-        )}
+          {gsmOptions.length > 0 && (
+            <div className="product-card-gsm">
+              {gsmOptions.map((gsm) => `${gsm} GSM`).join(" • ")}
+            </div>
+          )}
 
-        <h3>{title}</h3>
-
-        <p>{description}</p>
-
-        <div className="product-sizes">
-          <p>Available Sizes</p>
-
-          <div className="size-list">
-            {sizeOptions.map((item) => (
-              <span key={item.size}>{item.size}</span>
-            ))}
+          <div className="product-card-image-action" aria-hidden="true">
+            View Product
+            <span>↗</span>
           </div>
         </div>
+      </Link>
 
-        {colourCount > 0 && (
-          <div className="product-card-colour-count">
-            {colourCount} colours available in every size
+      <div className="product-card-content">
+        <div className="product-card-heading">
+  <h3>{title}</h3>
+</div>
+
+        <p className="product-card-description">{description}</p>
+
+        <div className="product-card-specifications">
+          <div className="product-sizes">
+            <p>Available Sizes</p>
+
+            <div className="size-list">
+              {sizeOptions.map((item) => (
+                <span key={item.size}>{item.size}</span>
+              ))}
+            </div>
           </div>
-        )}
 
-        <Link href={`/products/${slug}`} className="product-button">
-          View Details <span>→</span>
-        </Link>
+          {colourCount > 0 && (
+  <div className="product-card-colour-count">
+    <span className="product-card-availability-dot" />
+    Available in {colourCount} colours
+  </div>
+)}
+        </div>
+
+        <div className="product-card-footer">
+          <span>Ready stock and custom printing available</span>
+
+          <Link href={`/products/${slug}`} className="product-button">
+            View Details
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </div>
     </article>
   );

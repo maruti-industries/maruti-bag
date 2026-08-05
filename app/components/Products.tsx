@@ -4,9 +4,11 @@ import { products } from "../data/products";
 export default function Products() {
   return (
     <section className="products-section" id="products">
-      <div className="section-heading">
+      <div className="products-heading">
         <p>OUR PRODUCT RANGE</p>
+
         <h2>Packaging Solutions Built for Your Business</h2>
+
         <span>
           Choose from ready-stock and custom-printed bags manufactured for
           retailers, wholesalers and brands across India.

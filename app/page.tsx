@@ -1,3 +1,4 @@
+import BusinessStats from "./components/BusinessStats";
 import Navbar from "./components/Navbar";
 import TrustBar from "./components/TrustBar";
 import Products from "./components/Products";
@@ -7,62 +8,61 @@ import Industries from "./components/Industries";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import HeroProductShowcase from "./components/HeroProductShowcase";
 
 export default function Home() {
   return (
     <main>
-
       <Navbar />
 
-
       <section className="hero">
-        <div className="hero-content">
-          <p className="hero-label">PREMIUM PACKAGING SOLUTIONS</p>
+        <HeroProductShowcase>
+          <div className="hero-content">
+            <p className="hero-label">PREMIUM PACKAGING SOLUTIONS</p>
 
-          <h1>
-            Premium BOPP, Metallic &amp; Non-Woven Bags for Bulk Buyers Across India
-          </h1>
+            <h1>
+              Packaging That Makes
+              <span>Your Brand Stand Out.</span>
+            </h1>
 
-          <p className="hero-description">
-            Maruti Bag supports brands, retailers, wholesalers and export-focused buyers with ready stock, custom printing, pan-India delivery and export inquiries.
-          </p>
+            <p className="hero-description">
+              Premium BOPP, metallic and non-woven bags manufactured for
+              retailers, wholesalers and growing brands across India.
+            </p>
 
-          <div className="hero-buttons">
-            <a href="#contact" className="primary-button">
-              Request a Quote
-            </a>
+            <div className="hero-buttons">
+              <a href="#products" className="primary-button">
+                Explore Products
+              </a>
 
-            <a href="https://wa.me/919427152052" className="whatsapp-button">
-              WhatsApp Inquiry
-            </a>
-          </div>
+              <a href="#contact" className="whatsapp-button">
+                Request a Quote
+              </a>
+            </div>
 
-          <div className="hero-points" aria-label="Key service highlights">
-            <span>Ready Stock</span>
-            <span>Custom Printing</span>
-            <span>Pan-India Delivery</span>
-            <span>Export Inquiries</span>
-          </div>
-        </div>
-
-        <div className="hero-visual">
-          <div className="image-placeholder">
-            <div className="image-placeholder-inner">
-              <span>PRODUCT PHOTOS</span>
-              <strong>Product Photos Coming Soon</strong>
-              <p>Premium packaging visuals will be added soon.</p>
+            <div
+              className="hero-trust-line"
+              aria-label="Business service highlights"
+            >
+              <span>Ready Stock</span>
+              <i aria-hidden="true" />
+              <span>Custom Printing</span>
+              <i aria-hidden="true" />
+              <span>Pan-India Delivery</span>
             </div>
           </div>
-        </div>
+        </HeroProductShowcase>
       </section>
-<TrustBar />
-<Products />
-<Gallery />
-<Industries />
-<About />
-<WhyChooseUs />
-<Contact />
-<Footer />
+
+      <TrustBar />
+      <Products />
+      <Gallery />
+      <Industries />
+      <About />
+      <WhyChooseUs />
+      <BusinessStats />
+      <Contact />
+      <Footer />
     </main>
   );
-}
+} 

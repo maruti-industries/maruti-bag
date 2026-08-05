@@ -1,3 +1,4 @@
+import Reveal from "./Reveal";
 export default function Industries() {
   const industries = [
     "Garment Stores",
@@ -10,25 +11,35 @@ export default function Industries() {
     "Corporate Gifting",
   ];
 
+  const scrollingIndustries = [...industries, ...industries];
+
   return (
     <section className="industries-section" id="industries">
+      <Reveal>
       <div className="industries-heading">
         <p>INDUSTRIES WE SERVE</p>
+
         <h2>Packaging Solutions for Every Business</h2>
+
         <span>
-          We manufacture durable and customized bags for retailers, wholesalers
-          and businesses across multiple industries.
+          Durable and customized bags for retailers, wholesalers and growing
+          brands across India.
         </span>
       </div>
+      </Reveal>
 
-      <div className="industries-grid">
-        {industries.map((industry, index) => (
-          <article className="industry-card" key={industry}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <h3>{industry}</h3>
-          </article>
-        ))}
+      <Reveal delay={180}>
+      <div className="industries-marquee" aria-label="Industries we serve">
+        <div className="industries-marquee-track">
+          {scrollingIndustries.map((industry, index) => (
+            <div className="industry-pill" key={`${industry}-${index}`}>
+              <span className="industry-dot" aria-hidden="true" />
+              <span>{industry}</span>
+            </div>
+          ))}
+        </div>
       </div>
+      </Reveal>
     </section>
   );
 }

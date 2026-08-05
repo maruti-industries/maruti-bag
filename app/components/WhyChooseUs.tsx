@@ -1,56 +1,59 @@
+const reasons = [
+  {
+    title: "Premium Quality",
+    text: "Strong materials and reliable finishing.",
+  },
+  {
+    title: "Ready Stock",
+    text: "Selected bags available for faster dispatch.",
+  },
+  {
+    title: "Custom Printing",
+    text: "Logo printing from 500 pieces.",
+  },
+  {
+    title: "Flexible MOQ",
+    text: "Plain bags available from 100–200 pieces.",
+  },
+  {
+    title: "Pan-India Delivery",
+    text: "Dependable supply across India.",
+  },
+  {
+    title: "Direct Manufacturer",
+    text: "Clear communication and dependable service.",
+  },
+];
+
 export default function WhyChooseUs() {
-  const reasons = [
-    {
-      number: "01",
-      title: "Premium Quality",
-      text: "Strong materials, reliable finishing and consistent quality for every order.",
-    },
-    {
-      number: "02",
-      title: "Ready Stock",
-      text: "Selected bags are available in stock for faster dispatch and urgent requirements.",
-    },
-    {
-      number: "03",
-      title: "Custom Printing",
-      text: "Logo printing and customized bag production available from 500 pieces.",
-    },
-    {
-      number: "04",
-      title: "Flexible Quantities",
-      text: "Plain ready-stock bags are available from approximately 100–200 pieces.",
-    },
-    {
-      number: "05",
-      title: "Pan-India Delivery",
-      text: "We supply retailers, wholesalers and businesses across India.",
-    },
-    {
-      number: "06",
-      title: "Direct Manufacturer",
-      text: "Work directly with the manufacturer for better communication and dependable service.",
-    },
-  ];
-
   return (
-    <section className="why-section" id="about">
-      <div className="why-heading">
-        <p>WHY MARUTI BAG</p>
-        <h2>Reliable Packaging. Professional Service.</h2>
-        <span>
-          We combine ready stock, custom manufacturing and dependable delivery
-          to make bag sourcing simple for businesses across India.
-        </span>
-      </div>
+    <section className="why-section" id="why-maruti-bag">
+      <div className="why-container">
+        <div className="why-heading">
+          <p>WHY MARUTI BAG</p>
 
-      <div className="why-grid">
-        {reasons.map((reason) => (
-          <article className="why-card" key={reason.number}>
-            <span className="why-number">{reason.number}</span>
-            <h3>{reason.title}</h3>
-            <p>{reason.text}</p>
-          </article>
-        ))}
+          <h2>Reliable Packaging. Professional Service.</h2>
+
+          <span>
+            Practical packaging solutions backed by ready stock, custom
+            manufacturing and dependable delivery.
+          </span>
+        </div>
+
+        <div className="why-strip">
+          {reasons.map((reason) => (
+            <article className="why-item" key={reason.title}>
+              <span className="why-check" aria-hidden="true">
+                ✓
+              </span>
+
+              <div>
+                <h3>{reason.title}</h3>
+                <p>{reason.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
