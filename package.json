@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "google-auth-library": "^11.0.0",
     "googleapis": "^174.0.1",
     "lucide-react": "^1.28.0",
     "next": "16.2.10",

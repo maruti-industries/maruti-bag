@@ -6,11 +6,9 @@ import { useEffect, useMemo, useState } from "react";
 import { Search, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
-import {
-  GalleryFilter,
-  GalleryItem,
-  galleryCategories,
-} from "../data/galleryItems";
+import type { GalleryItem } from "@/lib/gallery";
+
+type GalleryFilter = "All" | "Real Products" | string;
 
 const WHATSAPP_NUMBER = "919427152052";
 
@@ -24,6 +22,26 @@ export default function GalleryExplorer({
   const [activeCategory, setActiveCategory] =
     useState<GalleryFilter>("All");
 
+  const galleryCategories = useMemo<GalleryFilter[]>(() => {
+    const categories = Array.from(
+      new Set(
+        items
+          .map((item) => item.category.trim())
+          .filter(Boolean),
+      ),
+    );
+
+    const hasRealProducts = items.some(
+      (item) => item.isRealProduct || item.type === "product",
+    );
+
+    return [
+      "All",
+      ...(hasRealProducts ? ["Real Products"] : []),
+      ...categories,
+    ];
+  }, [items]);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedItemIndex, setSelectedItemIndex] =
     useState<number | null>(null);
@@ -34,14 +52,16 @@ export default function GalleryExplorer({
     return items.filter((item) => {
       const matchesCategory =
         activeCategory === "All" ||
-        item.category === activeCategory;
+        (activeCategory === "Real Products"
+          ? item.isRealProduct || item.type === "product"
+          : item.category === activeCategory);
 
       const searchableText = [
         item.title,
         item.category,
-        item.relatedProduct,
+        item.productSlug ?? "",
         item.description,
-        ...item.keywords,
+        item.type,
       ]
         .join(" ")
         .toLowerCase();
@@ -164,15 +184,18 @@ export default function GalleryExplorer({
   };
 
   const createWhatsAppLink = (item: GalleryItem) => {
-    const message = `Hello Maruti Bag,
+    const fallbackMessage = `Hello Maruti Bag,
 
 I am interested in this gallery design:
 
 Design: ${item.title}
-Category: ${item.category}
-Related Product: ${item.relatedProduct}
+Category: ${item.category}${
+      item.productSlug ? `\nProduct: ${item.productSlug}` : ""
+    }
 
 Please share suitable sizes, GSM options, minimum order quantity, printing details and quotation.`;
+
+    const message = item.whatsappMessage || fallbackMessage;
 
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
       message,
@@ -299,7 +322,7 @@ Please share suitable sizes, GSM options, minimum order quantity, printing detai
                 <div className="gallery-explorer-card-content">
                   <div className="gallery-explorer-card-heading">
                     <div>
-                      <span>{item.relatedProduct}</span>
+                      <span>{item.productSlug ?? item.category}</span>
                       <h2>{item.title}</h2>
                     </div>
 
@@ -316,9 +339,9 @@ Please share suitable sizes, GSM options, minimum order quantity, printing detai
 
                   <div className="gallery-explorer-actions">
                     {item.type === "product" &&
-                    item.productLink ? (
+                    item.productSlug ? (
                       <Link
-                        href={item.productLink}
+                        href={`/products/${item.productSlug}`}
                         className="gallery-view-product"
                       >
                         View Product
@@ -498,13 +521,13 @@ Please help me with suitable bag type, size, GSM, printing options, minimum orde
               <p>{selectedItem.description}</p>
 
               <strong>
-                Suitable for: {selectedItem.relatedProduct}
+                Suitable for: {selectedItem.productSlug ?? selectedItem.category}
               </strong>
 
               <div className="gallery-lightbox-actions">
                 {selectedItem.type === "product" &&
-                selectedItem.productLink ? (
-                  <Link href={selectedItem.productLink}>
+                selectedItem.productSlug ? (
+                  <Link href={`/products/${selectedItem.productSlug}`}>
                     View Product
                     <span aria-hidden="true">→</span>
                   </Link>

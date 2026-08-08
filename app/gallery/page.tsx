@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import GalleryExplorer from "./GalleryExplorer";
 
-import { galleryItems } from "../data/galleryItems";
+import { getGalleryItems } from "@/lib/gallery";
 
 export const metadata: Metadata = {
   title:
@@ -37,11 +36,8 @@ export const metadata: Metadata = {
     title: "Maruti Bag Gallery",
     description:
       "Browse premium bag designs and real manufactured products from Maruti Bag.",
-
     url: "https://www.marutibag.com/gallery",
-
     siteName: "Maruti Bag",
-
     images: [
       {
         url: "/images/bopp-matt-laminated-bag-bottle-green.png",
@@ -50,19 +46,15 @@ export const metadata: Metadata = {
         alt: "Maruti Bag Gallery",
       },
     ],
-
     locale: "en_IN",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-
     title: "Maruti Bag Gallery",
-
     description:
       "Premium non-woven and laminated bag gallery with custom branding inspiration.",
-
     images: ["/images/bopp-matt-laminated-bag-bottle-green.png"],
   },
 
@@ -72,11 +64,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function GalleryPage() {
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+export default async function GalleryPage() {
+  const galleryItems = await getGalleryItems();
+
   return (
     <>
-      <Navbar />
-
       <main className="gallery-page">
         <section className="gallery-page-hero">
           <p>MARUTI BAG GALLERY</p>

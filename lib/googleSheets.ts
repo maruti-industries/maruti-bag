@@ -1,123 +1,148 @@
-import { google } from "googleapis";
+import "server-only";
 
-function normalizePrivateKey(rawPrivateKey: string): string {
-  return rawPrivateKey
-    .replace(/^['"]|['"]$/g, "")
-    .replace(/\\n/g, "\n")
-    .trim();
+import { JWT } from "google-auth-library";
+
+export type GoogleSheetRow = Record<string, string>;
+
+function cleanEnvValue(value: string | undefined) {
+  return String(value ?? "")
+    .trim()
+    .replace(/^["']|["']$/g, "");
 }
 
-function getGoogleSheetsCredentials() {
-  const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL?.trim();
-  const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.trim();
-  const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID?.trim();
+function getCredentials() {
+  const clientEmail = cleanEnvValue(
+    process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
+  );
 
-  const validationErrors: string[] = [];
+  const rawPrivateKey = cleanEnvValue(
+    process.env.GOOGLE_SHEETS_PRIVATE_KEY,
+  );
+
+  const spreadsheetId = cleanEnvValue(
+    process.env.GOOGLE_SHEETS_SPREADSHEET_ID,
+  );
+
+  const privateKey = rawPrivateKey
+    .replace(/\\n/g, "\n")
+    .trim();
 
   if (!clientEmail) {
-    validationErrors.push(
-      "Missing GOOGLE_SHEETS_CLIENT_EMAIL environment variable.",
-    );
-  } else if (!clientEmail.endsWith(".iam.gserviceaccount.com")) {
-    validationErrors.push(
-      "GOOGLE_SHEETS_CLIENT_EMAIL must end with .iam.gserviceaccount.com.",
-    );
+    throw new Error("GOOGLE_SHEETS_CLIENT_EMAIL is missing.");
   }
 
   if (!privateKey) {
-    validationErrors.push(
-      "Missing GOOGLE_SHEETS_PRIVATE_KEY environment variable.",
-    );
-  } else {
-    const normalizedPrivateKey = normalizePrivateKey(privateKey);
-
-    if (!normalizedPrivateKey.startsWith("-----BEGIN PRIVATE KEY-----")) {
-      validationErrors.push(
-        "GOOGLE_SHEETS_PRIVATE_KEY does not start with the expected PEM header.",
-      );
-    }
-
-    if (!normalizedPrivateKey.endsWith("-----END PRIVATE KEY-----")) {
-      validationErrors.push(
-        "GOOGLE_SHEETS_PRIVATE_KEY does not end with the expected PEM footer.",
-      );
-    }
+    throw new Error("GOOGLE_SHEETS_PRIVATE_KEY is missing.");
   }
 
   if (!spreadsheetId) {
-    validationErrors.push(
-      "Missing GOOGLE_SHEETS_SPREADSHEET_ID environment variable.",
+    throw new Error("GOOGLE_SHEETS_SPREADSHEET_ID is missing.");
+  }
+
+  if (!privateKey.startsWith("-----BEGIN PRIVATE KEY-----")) {
+    throw new Error(
+      "GOOGLE_SHEETS_PRIVATE_KEY has an invalid beginning.",
     );
   }
 
-  if (validationErrors.length > 0) {
-    throw new Error(validationErrors.join(" "));
+  if (!privateKey.endsWith("-----END PRIVATE KEY-----")) {
+    throw new Error(
+      "GOOGLE_SHEETS_PRIVATE_KEY has an invalid ending.",
+    );
   }
 
   return {
-    clientEmail: clientEmail!,
-    privateKey: normalizePrivateKey(privateKey!),
-    spreadsheetId: spreadsheetId!,
+    clientEmail,
+    privateKey,
+    spreadsheetId,
   };
 }
 
-async function getSheetsClient() {
-  const { clientEmail, privateKey } = getGoogleSheetsCredentials();
+async function getAccessToken() {
+  const { clientEmail, privateKey } = getCredentials();
 
-  const auth = new google.auth.JWT({
+  const auth = new JWT({
     email: clientEmail,
     key: privateKey,
-    scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
+    scopes: [
+      "https://www.googleapis.com/auth/spreadsheets.readonly",
+    ],
   });
 
-  await auth.authorize();
+  const tokenResult = await auth.getAccessToken();
 
-  return google.sheets({
-    version: "v4",
-    auth,
-  });
+  if (!tokenResult.token) {
+    throw new Error(
+      "Google authentication succeeded but no access token was returned.",
+    );
+  }
+
+  return tokenResult.token;
 }
-
-export type GoogleSheetRow = Record<string, string>;
 
 export async function readSheetRows(
   sheetName: string,
 ): Promise<GoogleSheetRow[]> {
-  try {
-    const { spreadsheetId } = getGoogleSheetsCredentials();
+  const { spreadsheetId } = getCredentials();
 
-    const sheets = await getSheetsClient();
+  const accessToken = await getAccessToken();
 
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId,
-      range: `'${sheetName}'!A:Z`,
-    });
+  const range = encodeURIComponent(`'${sheetName}'!A:Z`);
 
-    const values = response.data.values;
+  const url =
+    `https://sheets.googleapis.com/v4/spreadsheets/` +
+    `${spreadsheetId}/values/${range}`;
 
-    if (!values || values.length < 2) {
-      return [];
-    }
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      Accept: "application/json",
+    },
+    cache: "no-store",
+  });
 
-    const [headerRow, ...dataRows] = values;
+  if (!response.ok) {
+    const errorText = await response.text();
 
-    const headers = headerRow.map((header) => String(header ?? "").trim());
-
-    return dataRows
-      .filter((row) => row.some((cell) => String(cell ?? "").trim() !== ""))
-      .map((row) => {
-        const record: GoogleSheetRow = {};
-
-        headers.forEach((header, index) => {
-          if (!header) return;
-
-          record[header] = String(row[index] ?? "").trim();
-        });
-
-        return record;
-      });
-  } catch {
-    console.error(`[google-sheets] Failed to read "${sheetName}"`);
-    throw new Error(`Unable to load sheet "${sheetName}" right now.`);
+    throw new Error(
+      `Google Sheets API returned ${response.status}: ${errorText}`,
+    );
   }
+
+  const data = (await response.json()) as {
+    values?: unknown[][];
+  };
+
+  const values = data.values;
+
+  if (!values || values.length < 2) {
+    return [];
+  }
+
+  const [headerRow, ...dataRows] = values;
+
+  const headers = headerRow.map((header) =>
+    String(header ?? "").trim(),
+  );
+
+  return dataRows
+    .filter((row) =>
+      row.some(
+        (cell) => String(cell ?? "").trim() !== "",
+      ),
+    )
+    .map((row) => {
+      const record: GoogleSheetRow = {};
+
+      headers.forEach((header, index) => {
+        if (!header) return;
+
+        record[header] = String(
+          row[index] ?? "",
+        ).trim();
+      });
+
+      return record;
+    });
 }
