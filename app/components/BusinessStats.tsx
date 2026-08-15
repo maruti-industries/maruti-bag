@@ -57,7 +57,7 @@ function AnimatedNumber({
 
         hasAnimated.current = true;
 
-        const duration = 1400;
+        const duration = 4000;
         const startTime = performance.now();
 
         const updateCount = (currentTime: number) => {

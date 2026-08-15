@@ -1629,7 +1629,7 @@ main {
 
 .gallery-section {
   width: 100%;
-  padding: 68px 24px 76px;
+  padding: 0px 24px 76px;
   background:
     radial-gradient(
       circle at 18% 12%,
@@ -1894,7 +1894,7 @@ main {
 
 @media (max-width: 900px) {
   .gallery-section {
-    padding: 68px 22px 76px;
+    padding: 10px 22px 76px;
   }
 
   .gallery-grid {
@@ -1912,7 +1912,7 @@ main {
 
 @media (max-width: 600px) {
   .gallery-section {
-    padding: 56px 16px 62px;
+    padding: 20px 16px 62px;
   }
 
   .gallery-heading {
@@ -11019,5 +11019,311 @@ textarea:focus-visible {
   .catalog-card-image-element,
   .catalog-card-button span {
     transition: none;
+  }
+}
+
+/* =========================================
+   REUSABLE BOPP SECTION
+========================================= */
+
+.reusable-bopp {
+  padding: 10px 24px;
+  background:
+    radial-gradient(
+      circle at 8% 15%,
+      rgba(255, 91, 0, 0.07),
+      transparent 28%
+    ),
+    #faf9f7;
+}
+
+.reusable-bopp-container {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+/* HEADING */
+
+.reusable-bopp-heading {
+  max-width: 720px;
+  margin-bottom: 60px;
+}
+
+.reusable-bopp-eyebrow {
+  margin: 0 0 15px;
+  color: #ff5b00;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.reusable-bopp-heading h2 {
+  margin: 0;
+  max-width: 680px;
+  color: #171717;
+  font-size: clamp(42px, 5vw, 66px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.reusable-bopp-heading h2 span {
+  color: #ff5b00;
+}
+
+.reusable-bopp-intro {
+  max-width: 650px;
+  margin: 22px 0 0;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* BENEFITS */
+
+.reusable-bopp-benefits {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #dedbd7;
+  border-bottom: 1px solid #dedbd7;
+}
+
+.reusable-bopp-benefit {
+  min-height: 205px;
+  padding: 34px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.reusable-bopp-benefit:not(:last-child) {
+  border-right: 1px solid #dedbd7;
+}
+
+.reusable-bopp-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #ff5b00;
+  background: #fff;
+  border: 1px solid rgba(255, 91, 0, 0.2);
+  box-shadow: 0 7px 22px rgba(30, 20, 15, 0.05);
+}
+
+.reusable-bopp-benefit h3 {
+  margin: 0 0 9px;
+  color: #1c1c1c;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.reusable-bopp-benefit p {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* BOTTOM MESSAGE */
+
+.reusable-bopp-message {
+  margin-top: 54px;
+  padding: 38px 42px;
+  display: grid;
+  grid-template-columns: 0.8fr 2fr 1.35fr;
+  gap: 38px;
+  align-items: center;
+
+  background: #fff;
+  border: 1px solid #e7e3df;
+  border-radius: 18px;
+
+  box-shadow: 0 18px 50px rgba(24, 18, 14, 0.06);
+}
+
+.reusable-bopp-message > p:first-child {
+  margin: 0;
+  color: #ff5b00;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.reusable-bopp-message h3 {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: clamp(25px, 2.6vw, 36px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.reusable-bopp-message h3 span {
+  color: #ff5b00;
+}
+
+.reusable-bopp-message-text {
+  margin: 0;
+  padding-left: 32px;
+  border-left: 1px solid #e3dfdb;
+
+  color: #6f6f6f;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* TABLET */
+
+@media (max-width: 950px) {
+  .reusable-bopp {
+    padding: 10px 24px;
+  }
+
+  .reusable-bopp-benefits {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reusable-bopp-benefit:nth-child(2) {
+    border-right: none;
+  }
+
+  .reusable-bopp-benefit:nth-child(-n + 2) {
+    border-bottom: 1px solid #dedbd7;
+  }
+
+  .reusable-bopp-message {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+
+  .reusable-bopp-message-text {
+    padding-left: 0;
+    border-left: none;
+    max-width: 600px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .reusable-bopp {
+    padding: 10px 20px;
+  }
+
+  .reusable-bopp-heading {
+    margin-bottom: 42px;
+  }
+
+  .reusable-bopp-heading h2 {
+    font-size: 42px;
+  }
+
+  .reusable-bopp-intro {
+    font-size: 15px;
+  }
+
+  .reusable-bopp-benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .reusable-bopp-benefit {
+    min-height: auto;
+    padding: 27px 8px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .reusable-bopp-benefit:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid #dedbd7;
+  }
+
+  .reusable-bopp-icon {
+    flex-shrink: 0;
+  }
+
+  .reusable-bopp-message {
+    margin-top: 38px;
+    padding: 28px 25px;
+    border-radius: 15px;
+  }
+
+  .reusable-bopp-message h3 {
+    font-size: 29px;
+  }
+}
+
+/* =========================================
+   HOMEPAGE SPACING POLISH
+========================================= */
+
+/* Trust / feature bar */
+.trust-section {
+  padding-top: 55px;
+  padding-bottom: 55px;
+}
+
+/* Product range */
+.products-section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Reusable BOPP section */
+.reusable-bopp {
+  padding-top: 65px;
+  padding-bottom: 55px;
+}
+
+/* Gallery */
+.gallery-section {
+  padding-top: 50px;
+  padding-bottom: 60px;
+}
+
+/* Industries */
+.industries-section {
+  padding-top: 55px;
+  padding-bottom: 55px;
+}
+
+/* About */
+.about-section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Why choose Maruti Bag */
+.why-section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Business statistics */
+.business-stats-section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Contact */
+.contact-section {
+  padding-top: 65px;
+  padding-bottom: 65px;
+}
+
+@media (max-width: 768px) {
+  .trust-section,
+  .products-section,
+  .reusable-bopp,
+  .gallery-section,
+  .industries-section,
+  .about-section,
+  .why-section,
+  .business-stats-section,
+  .contact-section {
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
 }

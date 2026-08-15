@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -335,10 +335,50 @@ Delivery City:
 Please share availability and quotation.`;
 
   const formatPrice = (price: number | null) =>
-    typeof price === "number" ? `₹${price.toLocaleString("en-IN")}` : "On request";
+    typeof price === "number" && price > 0
+      ? `₹${price.toLocaleString("en-IN")}`
+      : "Get Quote";
 
   const quotationGsmValues = Array.from(new Set(product.variants.map((variant) => variant.gsm))).sort(
     (a, b) => a - b,
+  );
+
+  const pricingRows = sizeGroups.flatMap(([size, variants]) =>
+    quotationGsmValues.flatMap((gsm) => {
+      const matchingVariants = variants.filter((variant) => variant.gsm === gsm);
+
+      if (matchingVariants.length === 0) {
+        return [];
+      }
+
+      const hasReadyStock = matchingVariants.some((variant) =>
+        variant.availability.toLowerCase().includes("ready stock"),
+      );
+
+      const positiveRates = matchingVariants
+        .map((variant) => variant.rate)
+        .filter((rate) => typeof rate === "number" && rate > 0);
+
+      const referenceRate =
+        positiveRates.length > 0 ? Math.min(...positiveRates) : null;
+
+      const rateUnit =
+        matchingVariants.find((variant) => variant.rate > 0)?.rateUnit ||
+        matchingVariants[0]?.rateUnit ||
+        "Per Piece";
+
+      return [
+        {
+          size,
+          gsm,
+          availability: hasReadyStock
+            ? "Ready Stock Available"
+            : "Enquire for Current Availability",
+          rate: referenceRate,
+          rateUnit,
+        },
+      ];
+    }),
   );
  
   const formattedRelatedProducts = relatedProducts.map(
@@ -610,10 +650,10 @@ Please share availability and quotation.`;
 
           <section className="product-size-section">
             <div className="product-section-heading">
-              <span>Bulk Order Pricing</span>
-              <h2>Estimated Pricing Guide</h2>
+              <span>Bulk Order Guide</span>
+              <h2>Size &amp; Availability Guide</h2>
               <p>
-                Compare size, GSM and reference pricing before requesting your final quotation.
+                Compare available sizes, GSM and current availability before requesting your final quotation.
               </p>
             </div>
 
@@ -623,36 +663,23 @@ Please share availability and quotation.`;
                   <thead>
                     <tr>
                       <th>Size</th>
-                      <th>Colour</th>
-                      {quotationGsmValues.map((gsm) => (
-                        <Fragment key={`${gsm}-group`}>
-                          <th>{gsm} GSM</th>
-                          <th>Rate</th>
-                        </Fragment>
-                      ))}
+                      <th>GSM</th>
+                      <th>Availability</th>
+                      <th>Rate</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    {sizeGroups.map(([size, variants]) => (
-                      <tr key={size}>
-                        <td className="matrix-size-cell">{size}</td>
-                        <td className="matrix-capacity-cell">
-                          {variants.map((variant) => variant.colour).join(" • ")}
-                        </td>
-                        {quotationGsmValues.map((gsm) => {
-                          const matchingVariant = variants.find((variant) => variant.gsm === gsm);
 
-                          return (
-                            <Fragment key={`${size}-${gsm}-group`}>
-                              <td className="matrix-quantity-cell">
-                                {matchingVariant ? matchingVariant.availability : "—"}
-                              </td>
-                              <td className="matrix-price-cell">
-                                {matchingVariant ? `${formatPrice(matchingVariant.rate)} / ${matchingVariant.rateUnit}` : "—"}
-                              </td>
-                            </Fragment>
-                          );
-                        })}
+                  <tbody>
+                    {pricingRows.map((row) => (
+                      <tr key={`${row.size}-${row.gsm}`}>
+                        <td className="matrix-size-cell">{row.size}</td>
+                        <td className="matrix-quantity-cell">{row.gsm} GSM</td>
+                        <td className="matrix-quantity-cell">{row.availability}</td>
+                        <td className="matrix-price-cell">
+                          {row.rate
+                            ? `${formatPrice(row.rate)} / ${row.rateUnit}`
+                            : "Get Quote"}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -660,32 +687,35 @@ Please share availability and quotation.`;
               </div>
 
               <div className="quotation-matrix-mobile-list">
-                {sizeGroups.map(([size, variants]) => (
-                  <article className="quotation-matrix-card" key={size}>
+                {pricingRows.map((row) => (
+                  <article
+                    className="quotation-matrix-card"
+                    key={`${row.size}-${row.gsm}`}
+                  >
                     <div className="quotation-matrix-card-header">
                       <div>
                         <span>Size</span>
-                        <h3>{size}</h3>
+                        <h3>{row.size}</h3>
                       </div>
+
                       <div className="quotation-matrix-capacity">
-                        {variants.map((variant) => variant.colour).join(" • ")}
+                        {row.gsm} GSM
                       </div>
                     </div>
 
                     <div className="quotation-matrix-card-body">
-                      {quotationGsmValues.map((gsm) => {
-                        const matchingVariant = variants.find((variant) => variant.gsm === gsm);
+                      <div className="quotation-matrix-card-item">
+                        <span className="quotation-matrix-card-label">
+                          Availability
+                        </span>
+                        <strong>{row.availability}</strong>
 
-                        return (
-                          <div className="quotation-matrix-card-item" key={`${size}-${gsm}`}>
-                            <span className="quotation-matrix-card-label">{gsm} GSM</span>
-                            <strong>{matchingVariant?.availability ?? "—"}</strong>
-                            <span className="quotation-matrix-card-price">
-                              {matchingVariant ? `${formatPrice(matchingVariant.rate)} / ${matchingVariant.rateUnit}` : "—"}
-                            </span>
-                          </div>
-                        );
-                      })}
+                        <span className="quotation-matrix-card-price">
+                          {row.rate
+                            ? `${formatPrice(row.rate)} / ${row.rateUnit}`
+                            : "Get Quote"}
+                        </span>
+                      </div>
                     </div>
                   </article>
                 ))}
@@ -693,7 +723,7 @@ Please share availability and quotation.`;
             </div>
 
             <p className="pricing-note">
-              Prices shown are estimated and may change according to printing, artwork, material, colour, order quantity and delivery location.
+              GST @18% extra | Freight charges extra. Final quotation depends on order quantity, printing, artwork, material and delivery location.
             </p>
           </section>
 

@@ -3,52 +3,58 @@ import Link from "next/link";
 
 const galleryImages = [
   {
-    src: "/images/bopp-matt-laminated-bag-bottle-green.jpeg",
-    alt: "Maroon non-woven box bag manufactured by Maruti Bag",
-    title: "Non-Woven Box Bag",
+    src: "https://res.cloudinary.com/gzexzrta/image/upload/v1786101625/NA_bottol_green_pxanfz.jpg",
+    alt: "Bottle green BOPP matt laminated bag manufactured by Maruti Bag",
+    title: "BOPP Matt Laminated Bag",
+    detail: "Bottle Green",
     category: "Real Product",
-    href: "/products/bopp-matt-laminated-bag-bottle-green",
-    imageFit: "contain",
+    href: "/products/bopp-matt-laminated-bag",
+    imageFit: "cover",
   },
   {
-    src: "/images/golden-metallic-bag.jpeg",
+    src: "https://res.cloudinary.com/gzexzrta/image/upload/v1786101629/NA_golden_ovnxdm.jpg",
     alt: "Golden metallic laminated bag manufactured by Maruti Bag",
     title: "Metallic Laminated Bag",
+    detail: "Golden",
     category: "Real Product",
     href: "/products/metallic-laminated-bag",
     imageFit: "cover",
   },
   {
-    src: "/images/sample-designs/matt-metallic-jewellery-brand-design.png",
-    alt: "Matt metallic jewellery brand bag design",
-    title: "Jewellery Brand Design",
-    category: "Design Inspiration",
-    href: "/products/matt-metallic-bag",
-    imageFit: "contain",
-  },
-  {
-    src: "/images/sample-designs/bopp-matt-footwear-brand-design.png",
-    alt: "BOPP matt footwear brand bag design",
-    title: "Footwear Brand Design",
-    category: "Design Inspiration",
+    src: "https://res.cloudinary.com/gzexzrta/image/upload/v1786101628/NF_grey_jvglap.jpg",
+    alt: "Grey BOPP matt laminated bag manufactured by Maruti Bag",
+    title: "BOPP Matt Laminated Bag",
+    detail: "Grey",
+    category: "Real Product",
     href: "/products/bopp-matt-laminated-bag",
-    imageFit: "contain",
+    imageFit: "cover",
   },
   {
-    src: "/images/sample-designs/bopp-matt-fashion-brand-design.png",
-    alt: "BOPP matt fashion brand bag design",
-    title: "Fashion Brand Design",
-    category: "Design Inspiration",
+    src: "https://res.cloudinary.com/gzexzrta/image/upload/v1786351514/NA_dark_blue_oswy1l.jpg",
+    alt: "Dark blue BOPP matt laminated bag manufactured by Maruti Bag",
+    title: "BOPP Matt Laminated Bag",
+    detail: "Dark Blue",
+    category: "Real Product",
     href: "/products/bopp-matt-laminated-bag",
-    imageFit: "contain",
+    imageFit: "cover",
   },
   {
-    src: "/images/sample-designs/matt-metallic-luxury-boutique-design.png",
-    alt: "Matt metallic luxury boutique bag design",
-    title: "Luxury Boutique Design",
-    category: "Design Inspiration",
+    src: "https://res.cloudinary.com/gzexzrta/image/upload/v1786101628/NF_rose_gold_cyzjxy.jpg",
+    alt: "Rose gold metallic laminated bag manufactured by Maruti Bag",
+    title: "Metallic Laminated Bag",
+    detail: "Rose Gold",
+    category: "Real Product",
+    href: "/products/metallic-laminated-bag",
+    imageFit: "cover",
+  },
+  {
+    src: "https://res.cloudinary.com/gzexzrta/image/upload/v1786380555/MF_red_tgycnt.jpg",
+    alt: "Red matt metallic bag manufactured by Maruti Bag",
+    title: "Matt Metallic Bag",
+    detail: "Red",
+    category: "Real Product",
     href: "/products/matt-metallic-bag",
-    imageFit: "contain",
+    imageFit: "cover",
   },
 ];
 
@@ -56,13 +62,13 @@ export default function Gallery() {
   return (
     <section className="gallery-section" id="gallery">
       <div className="gallery-heading">
-        <p>PRODUCT GALLERY</p>
+        <p>REAL PRODUCT GALLERY</p>
 
-        <h2>Real Products. Premium Possibilities.</h2>
+        <h2>Real Products. Real Finishes.</h2>
 
         <span>
-          Explore real Maruti Bag products and custom branding ideas created
-          for retail, jewellery, gifting, fashion and growing businesses.
+          Explore actual Maruti Bag products across BOPP matt laminated,
+          metallic laminated and matt metallic finishes.
         </span>
       </div>
 
@@ -72,37 +78,44 @@ export default function Gallery() {
             <Link
               href={image.href}
               className="gallery-card-link"
-              aria-label={`View ${image.title}`}
+              aria-label={`View ${image.title} in ${image.detail}`}
             >
               <Image
                 src={image.src}
-                  alt={image.alt}
-                    width={900}
-                    height={700}
-                    className={`gallery-image ${
-                      image.imageFit === "contain" ? "gallery-image-contain" : ""
-              }`}
-            />
+                alt={image.alt}
+                width={900}
+                height={700}
+                className={`gallery-image ${
+                  image.imageFit === "contain"
+                    ? "gallery-image-contain"
+                    : ""
+                }`}
+              />
 
               <div className="gallery-card-overlay">
                 <div>
-                  <span>{image.category}</span>
+                  <span>
+                    {image.category} • {image.detail}
+                  </span>
+
                   <h3>{image.title}</h3>
                 </div>
 
-                <strong aria-hidden="true">View Product →</strong>
+                <strong aria-hidden="true">
+                  View Product →
+                </strong>
               </div>
             </Link>
           </article>
         ))}
       </div>
 
-    <div className="gallery-footer">
-  <Link href="/gallery" className="gallery-view-all">
-    View Complete Gallery
-    <span aria-hidden="true">→</span>
-  </Link>
-</div>
+      <div className="gallery-footer">
+        <Link href="/gallery" className="gallery-view-all">
+          View Complete Gallery
+          <span aria-hidden="true">→</span>
+        </Link>
+      </div>
     </section>
   );
 }

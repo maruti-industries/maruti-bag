@@ -1,3 +1,4 @@
+import ReusableBopp from "./components/ReusableBopp";
 import BusinessStats from "./components/BusinessStats";
 import Navbar from "./components/Navbar";
 import TrustBar from "./components/TrustBar";
@@ -56,6 +57,7 @@ export default function Home() {
 
       <TrustBar />
       <Products />
+      <ReusableBopp />
       <Gallery />
       <Industries />
       <About />
