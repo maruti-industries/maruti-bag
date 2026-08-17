@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import ProductCard from "./ProductCard";
 import { getInventoryProducts } from "@/lib/inventory";
 
@@ -62,6 +64,15 @@ export default async function Products() {
           })
         )}
       </div>
+
+      {products.length > 0 && (
+        <div className="products-view-all">
+          <Link href="/products" className="products-view-all-button">
+            View All Products
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      )}
     </section>
   );
 }
