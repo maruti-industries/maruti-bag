@@ -234,10 +234,18 @@ Please share suitable sizes, GSM options, minimum order quantity, printing detai
         </div>
 
         <div
-          className="gallery-filter-list"
-          role="group"
-          aria-label="Filter gallery by category"
-        >
+  className="gallery-filter-list"
+  role="group"
+  aria-label="Filter gallery by category"
+  onWheel={(event) => {
+    
+    const container = event.currentTarget;
+
+    if (container.scrollWidth > container.clientWidth) {
+      container.scrollLeft += event.deltaY;
+    }
+  }}
+>
           {galleryCategories.map((category) => {
             const isActive = activeCategory === category;
 

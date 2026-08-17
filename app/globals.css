@@ -66,23 +66,26 @@ main {
 .navbar-logo {
   display: inline-flex;
   align-items: center;
-  text-decoration: none;
+  justify-content: center;
+  height: 100%;
+  transform: translateY(-3px);
+  margin-left: 6px;
 }
 
 .navbar-logo img {
-  width: 128px;
-  height: 46px;
+  width: 200px;
+  height: 70px;
   object-fit: contain;
   border-radius: 0;
 }
 
-.navbar-logo:hover img {
-  transform: scale(1.025);
+.navbar-scrolled .navbar-logo img {
+  width: 185px;
+  height: 80px;
 }
 
-.navbar-scrolled .navbar-logo img {
-  width: 126px;
-  height: 44px;
+.navbar-logo:hover img {
+  transform: scale(1.025);
 }
 
 .nav-links {
@@ -8331,14 +8334,23 @@ textarea:focus-visible {
   gap: 8px;
 
   overflow-x: auto;
+  overflow-y: hidden;
 
-  padding: 1px 1px 5px;
+  padding: 4px 18px 8px 2px;
 
+ scroll-behavior: smooth;
   scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
 }
 
 .gallery-filter-list::-webkit-scrollbar {
   display: none;
+}
+
+.gallery-filter-list::after {
+  content: "";
+  flex: 0 0 10px;
 }
 
 .gallery-filter-button {
@@ -11325,5 +11337,185 @@ textarea:focus-visible {
   .contact-section {
     padding-top: 48px;
     padding-bottom: 48px;
+  }
+}
+
+/* =========================================
+   MARUTI BAG — PREMIUM BRAND LOCKUP
+========================================= */
+
+.brand-wordmark {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 11px;
+
+  width: fit-content;
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition: transform 0.25s ease;
+}
+
+.brand-wordmark:hover {
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.brand-divider {
+  width: 1px;
+  height: 30px;
+
+  background: rgba(255, 255, 255, 0.22);
+}
+
+
+/* =========================================
+   WORDMARK
+========================================= */
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  line-height: 1;
+}
+
+.brand-main {
+  color: #ffffff;
+
+  font-size: 21px;
+  font-weight: 900;
+  line-height: 0.9;
+
+  letter-spacing: 1.5px;
+}
+
+
+/* Orange line + BAG */
+
+.brand-bottom {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  margin-top: 6px;
+  gap: 7px;
+}
+
+.brand-line {
+  display: block;
+  flex: 1;
+
+  height: 2px;
+  min-width: 25px;
+
+  background: #ff5b00;
+  border-radius: 999px;
+
+  transition: transform 0.25s ease;
+}
+
+.brand-wordmark:hover .brand-line {
+  transform: scaleX(0.92);
+  transform-origin: left;
+}
+
+.brand-bag {
+  color: #ff5b00;
+
+  font-size: 8px;
+  font-weight: 900;
+  line-height: 1;
+
+  letter-spacing: 2.7px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .brand-wordmark {
+    gap: 8px;
+  }
+
+  .brand-symbol {
+    width: 29px;
+    height: 29px;
+
+    font-size: 23px;
+
+    border-bottom-width: 2px;
+  }
+
+  .brand-symbol::before {
+    top: -3px;
+
+    width: 11px;
+    height: 7px;
+
+    border-width: 2px;
+    border-bottom: 0;
+  }
+
+  .brand-divider {
+    height: 26px;
+  }
+
+  .brand-main {
+    font-size: 18px;
+    letter-spacing: 1.2px;
+  }
+
+  .brand-bottom {
+    margin-top: 5px;
+    gap: 5px;
+  }
+
+  .brand-line {
+    height: 2px;
+    min-width: 20px;
+  }
+
+  .brand-bag {
+    font-size: 7px;
+    letter-spacing: 2.3px;
+  }
+}
+
+/* =========================================
+   FINAL NAVBAR LOGO SIZE
+========================================= */
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.navbar-logo-image {
+  width: 185px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .navbar-logo-image {
+    width: 155px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar-logo-image {
+    width: 135px;
   }
 }

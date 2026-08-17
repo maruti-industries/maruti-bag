@@ -98,7 +98,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://www.google.com/maps/search/?api=1&query=17-18%2C+Janta+Bazar%2C+Aai+Mata+Road%2C+Parvat+Patiya%2C+Surat%2C+Gujarat%2C+395010"
+                href="https://www.google.com/maps/search/?api=1&query=17-18%2C+Janta+Bazar%2C+Near+By+Krishna+Circle%2C+Parvat+Patiya%2C+Surat%2C+Gujarat%2C+395010"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Open Maruti Bag location in Google Maps"
@@ -110,7 +110,7 @@ export default function Footer() {
                 <span>
                   <small>Manufacturing Location</small>
                   <strong>
-                      17-18, Janta Bazar, Aai Mata Road,
+                      17-18, Janta Bazar, Near By Krishna Circle,
                   <br />
                       Parvat Patiya, Surat, Gujarat 395010
                   </strong>

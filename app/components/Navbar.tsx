@@ -32,6 +32,8 @@ export default function Navbar() {
 
   return (
     <header className={`navbar ${isScrolled ? "navbar-scrolled" : ""}`}>
+      
+      {/* MARUTI BAG LOGO */}
       <Link
         href="/"
         className="navbar-logo"
@@ -39,19 +41,21 @@ export default function Navbar() {
         aria-label="Maruti Bag home"
       >
         <Image
-          src="/images/Latest Logo.png"
+          src="/images/Maruti Bag Logo New.png"
           alt="Maruti Bag"
-          width={170}
-          height={60}
+          width={190}
+          height={58}
           priority
+          className="navbar-logo-image"
         />
       </Link>
 
+      {/* NAVIGATION */}
       <nav
-  id="primary-navigation"
-  className={`nav-links ${isMenuOpen ? "nav-links-open" : ""}`}
-  aria-label="Primary navigation"
->
+        id="primary-navigation"
+        className={`nav-links ${isMenuOpen ? "nav-links-open" : ""}`}
+        aria-label="Primary navigation"
+      >
         <Link href="/" onClick={closeMenu}>
           Home
         </Link>
@@ -65,8 +69,8 @@ export default function Navbar() {
         </Link>
 
         <Link href="/#gallery" onClick={closeMenu}>
-  Gallery
-</Link>
+          Gallery
+        </Link>
 
         <Link href="/#about" onClick={closeMenu}>
           About
@@ -77,6 +81,7 @@ export default function Navbar() {
         </Link>
       </nav>
 
+      {/* RIGHT SIDE */}
       <div className="navbar-actions">
         <a
           href={BUSINESS_WHATSAPP_URL}
@@ -97,7 +102,9 @@ export default function Navbar() {
             setIsMenuOpen((current) => !current);
           }}
           aria-label={
-            isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+            isMenuOpen
+              ? "Close navigation menu"
+              : "Open navigation menu"
           }
           aria-expanded={isMenuOpen}
           aria-controls="primary-navigation"
