@@ -18,7 +18,7 @@ const heroProducts = [
     title: "Non-Woven Box Bag",
     subtitle: "75 GSM • Custom Printed",
     image:
-      "/images/sample-designs/non-woven box jewellery-bag-design.png",
+      "/images/sample-designs/non-woven-box-agriculture-bag-design.png",
   },
   {
     title: "Metallic Laminated Bag",
@@ -30,13 +30,13 @@ const heroProducts = [
     title: "BOPP Matt Laminated Bag",
     subtitle: "100 GSM • 18 Colours",
     image:
-      "/images/sample-designs/bopp-matt-fashion-brand-design.png",
+      "/images/sample-designs/bopp-matt-footwear-brand-design.png",
   },
   {
     title: "Matt Metallic Bag",
     subtitle: "110 GSM • 8 Colours",
     image:
-      "/images/sample-designs/bopp-matt-fashion-brand-design.png",
+      "/images/sample-designs/matt-metallic-corporate-premium-design.png",
   },
 ];
 
@@ -105,14 +105,25 @@ export default function HeroProductShowcase({
             }`}
             key={product.title}
           >
-            <Image
-              src={product.image}
-              alt=""
-              fill
-              priority={index === 0}
-              sizes="100vw"
-              className="hero-background-image"
-            />
+            {/* Cinematic background layer */}
+<Image
+  src={product.image}
+  alt=""
+  fill
+  priority={index === 0}
+  sizes="100vw"
+  className="hero-background-image hero-background-image-blur"
+/>
+
+{/* Complete product layer */}
+<Image
+  src={product.image}
+  alt=""
+  fill
+  priority={index === 0}
+  sizes="100vw"
+  className="hero-background-image hero-background-image-product"
+/>
           </div>
         ))}
       </div>

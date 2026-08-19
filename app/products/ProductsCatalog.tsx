@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/app/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
@@ -223,6 +224,7 @@ export default function ProductsCatalog({
         )}
       </section>
     </main>
+  <Footer />
     </>
   );
 }

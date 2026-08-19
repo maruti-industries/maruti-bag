@@ -18,7 +18,7 @@ export default function TrustBar() {
     {
       icon: "📦",
       title: "Flexible MOQ",
-      text: "Plain bags from 100–200 pcs",
+      text: "Plain bags from 1000 pcs",
     },
   ];
 
