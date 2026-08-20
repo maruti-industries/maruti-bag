@@ -9275,6 +9275,7 @@ textarea:focus-visible {
   position: relative;
 
   width: min(1180px, calc(100% - 110px));
+  height: min(920px, calc(100dvh - 72px));
   max-height: calc(100vh - 72px);
 
   display: grid;
@@ -9304,7 +9305,7 @@ textarea:focus-visible {
   position: relative;
 
   min-width: 0;
-  min-height: 620px;
+  min-height: 0;
 
   display: flex;
   align-items: center;
@@ -9361,11 +9362,14 @@ textarea:focus-visible {
 
 .gallery-lightbox-details {
   min-width: 0;
+  min-height: 0;
   padding: 46px 38px 36px;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: safe center;
+
+  overflow-y: auto;
 
   background:
     radial-gradient(
@@ -9846,7 +9850,7 @@ textarea:focus-visible {
 }
 
 .gallery-lightbox-image-wrap {
-  min-height: 520px;
+  min-height: 0;
 }
 
 .gallery-lightbox-details {
@@ -10175,7 +10179,7 @@ textarea:focus-visible {
 }
 
   .gallery-lightbox-counter {
-  bottom: 18px;
+  bottom: 22px;
   padding: 8px 15px;
 
   background: rgba(20, 20, 20, 0.7);
