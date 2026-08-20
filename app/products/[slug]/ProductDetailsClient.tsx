@@ -722,9 +722,18 @@ Please share availability and quotation.`;
               </div>
             </div>
 
-            <p className="pricing-note">
-              GST @18% extra | Freight charges extra. Final quotation depends on order quantity, printing, artwork, material and delivery location.
-            </p>
+            <div className="pricing-note">
+  <div className="pricing-note-icon" aria-hidden="true">i</div>
+
+  <div className="pricing-note-content">
+    <strong>Pricing &amp; Order Note</strong>
+    <p>
+      Final pricing depends on order quantity, bag specifications,
+      printing/artwork and delivery location. GST @18% and applicable
+      freight charges are additional.
+    </p>
+  </div>
+</div>
           </section>
 
           <section className="product-why-choose-section">

@@ -17,7 +17,7 @@ export default function Footer() {
               aria-label="Go to Maruti Bag homepage"
             >
               <Image
-                src="/images/Latest Logo.png"
+                src="/images/Maruti Bag Logo New.png"
                 alt="Maruti Bag"
                 width={170}
                 height={60}
