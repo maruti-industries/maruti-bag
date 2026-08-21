@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const BUSINESS_WHATSAPP_URL = "https://wa.me/919427152052";
-
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -60,7 +58,7 @@ export default function Navbar() {
           Home
         </Link>
 
-        <Link href="/#products" onClick={closeMenu}>
+        <Link href="/products" onClick={closeMenu}>
           Products
         </Link>
 
@@ -68,7 +66,7 @@ export default function Navbar() {
           Industries
         </Link>
 
-        <Link href="/#gallery" onClick={closeMenu}>
+        <Link href="/gallery" onClick={closeMenu}>
           Gallery
         </Link>
 
@@ -83,15 +81,14 @@ export default function Navbar() {
 
       {/* RIGHT SIDE */}
       <div className="navbar-actions">
-        <a
-          href={BUSINESS_WHATSAPP_URL}
+        <Link
+          href="/#contact"
           className="quote-btn"
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={closeMenu}
         >
           Get Quote
           <span aria-hidden="true">→</span>
-        </a>
+        </Link>
 
         <button
           type="button"

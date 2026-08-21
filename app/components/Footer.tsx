@@ -43,8 +43,8 @@ export default function Footer() {
 
             <nav aria-label="Footer navigation">
               <Link href="/">Home</Link>
-              <Link href="/#products">Products</Link>
-              <Link href="/#gallery">Gallery</Link>
+              <Link href="/products">Products</Link>
+              <Link href="/gallery">Gallery</Link>
               <Link href="/#industries">Industries</Link>
               <Link href="/#about">About</Link>
               <Link href="/#contact">Contact</Link>

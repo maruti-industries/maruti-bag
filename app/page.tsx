@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import ReusableBopp from "./components/ReusableBopp";
 import BusinessStats from "./components/BusinessStats";
 import Navbar from "./components/Navbar";
@@ -32,13 +34,13 @@ export default function Home() {
             </p>
 
             <div className="hero-buttons">
-              <a href="#products" className="primary-button">
+              <Link href="/products" className="primary-button">
                 Explore Products
-              </a>
+              </Link>
 
-              <a href="#contact" className="whatsapp-button">
+              <Link href="/#contact" className="whatsapp-button">
                 Request a Quote
-              </a>
+              </Link>
             </div>
 
             <div

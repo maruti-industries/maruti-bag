@@ -48,12 +48,12 @@ export default function About() {
             </p>
 
             <div className="about-actions">
-              <Link href="#products" className="about-primary-link">
+              <Link href="/products" className="about-primary-link">
                 Explore Products
                 <span aria-hidden="true">→</span>
               </Link>
 
-              <Link href="#contact" className="about-secondary-link">
+              <Link href="/#contact" className="about-secondary-link">
                 Discuss Your Requirement
               </Link>
             </div>

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import {
@@ -10,6 +11,26 @@ import ProductDetailsClient from "./ProductDetailsClient";
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getInventoryProduct(slug);
+
+  if (!product) {
+    return {};
+  }
+
+  return {
+    title: product.name,
+    description:
+      product.seo.description ||
+      product.shortDescription ||
+      product.detailedDescription ||
+      `Explore ${product.name} in the ${product.category} range from Maruti Bag and view available product options.`,
+  };
+}
 
 export default async function ProductPage({
   params,
