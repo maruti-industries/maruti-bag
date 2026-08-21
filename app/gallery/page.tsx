@@ -8,7 +8,7 @@ import { getGalleryItems } from "@/lib/gallery";
 
 export const metadata: Metadata = {
   title:
-    "Gallery | Non Woven Bag Designs & Custom Printed Bag Ideas | Maruti Bag",
+    "Gallery | Non Woven Bag Designs & Custom Printed Bag Ideas",
 
   description:
     "Explore Maruti Bag's premium gallery featuring non-woven bags, BOPP laminated bags, metallic laminated bags and custom printed packaging designs for jewellery, fashion, retail, gifting, footwear, cosmetics and corporate brands.",

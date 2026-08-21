@@ -14,7 +14,7 @@ const aboutPoints = [
   {
     number: "03",
     title: "Custom Printing",
-    description: "Logo printing and customized production from 500 pieces.",
+    description: "Logo printing and customized production from 1,000 pieces.",
   },
   {
     number: "04",
@@ -43,7 +43,7 @@ export default function About() {
 
             <p className="about-description">
               We help retailers, wholesalers and growing brands source
-              dependable bags with ready-stock options, flexible quantities,
+              dependable bags with ready-stock options, bulk order quantities,
               custom printing and delivery across India.
             </p>
 
@@ -67,7 +67,7 @@ export default function About() {
             <h3>Built for Quality. Ready for Business.</h3>
 
             <p>
-              From small ready-stock requirements to customized bulk orders,
+              From ready-stock requirements to customized bulk orders,
               our team helps you select the right bag, size, GSM and printing
               option.
             </p>

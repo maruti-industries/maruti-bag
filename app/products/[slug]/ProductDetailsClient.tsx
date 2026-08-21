@@ -165,7 +165,7 @@ function ProductFaqAccordion() {
     {
       question: "What is the minimum order quantity?",
       answer:
-        "For custom printed bags, the minimum order quantity is generally 1000 pieces. Plain or unprinted bags may be available in smaller quantities depending on ready stock.",
+        "The minimum order quantity is 1,000 pieces for custom-printed, plain and ready-stock orders.",
     },
     {
       question: "Can I print my company logo on the bags?",

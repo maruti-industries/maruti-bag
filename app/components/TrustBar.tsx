@@ -13,12 +13,12 @@ export default function TrustBar() {
     {
       icon: "🎨",
       title: "Custom Printing",
-      text: "Logo & branding available",
+      text: "Logo printing and customized production from 1,000 pieces.",
     },
     {
       icon: "📦",
-      title: "Flexible MOQ",
-      text: "Plain bags from 1000 pcs",
+      title: "Bulk Order MOQ",
+      text: "MOQ: 1,000 Pieces",
     },
   ];
 

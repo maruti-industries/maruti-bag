@@ -411,7 +411,7 @@ Please share suitable sizes, GSM options, minimum order quantity, printing detai
       </p>
 
       <div className="gallery-conversion-points">
-        <span>Custom Printing from 500 Pieces</span>
+        <span>MOQ: 1,000 Pieces</span>
         <span>Ready Stock Options Available</span>
         <span>Multiple Sizes and GSM Options</span>
         <span>PAN India Delivery</span>

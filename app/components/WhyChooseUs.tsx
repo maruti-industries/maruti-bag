@@ -9,11 +9,11 @@ const reasons = [
   },
   {
     title: "Custom Printing",
-    text: "Logo printing from 1000 pieces.",
+    text: "Logo printing and customized production from 1,000 pieces.",
   },
   {
-    title: "Flexible MOQ",
-    text: "Plain bags available from 500 pieces.",
+    title: "Bulk Order MOQ",
+    text: "Orders start from 1,000 pieces for cost-effective production and delivery.",
   },
   {
     title: "Pan-India Delivery",
