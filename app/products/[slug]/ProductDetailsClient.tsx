@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import RelatedProducts from "../../components/RelatedProducts";
 import { InventoryProduct, InventoryVariant } from "@/lib/inventory";
+import { formatMoqCompact } from "@/lib/businessRules";
 
 const WHATSAPP_NUMBER = "919427152052";
 const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=`;
@@ -323,7 +324,7 @@ SKU: ${selectedVariant?.sku ?? ""}
 Required Size: ${selectedSize || ""}
 Selected Colour: ${selectedColour || ""}
 GSM: ${selectedVariant?.gsm ? `${selectedVariant.gsm} GSM` : ""}
-MOQ: ${selectedVariant?.moq ? `${selectedVariant.moq} pcs` : ""}
+MOQ: ${formatMoqCompact()}
 Availability: ${selectedVariant?.availability || product.availabilitySummary.publicLabel}
 Production Time: ${selectedVariant?.productionTime || ""}
 Dispatch Time: ${selectedVariant?.dispatchTime || ""}
@@ -605,7 +606,7 @@ Please share availability and quotation.`;
               </div>
               <div className="product-variant-spec-card">
                 <span>MOQ</span>
-                <strong>{selectedVariant?.moq ? `${selectedVariant.moq} pcs` : "—"}</strong>
+                <strong>{formatMoqCompact()}</strong>
               </div>
               <div className="product-variant-spec-card">
                 <span>Availability</span>

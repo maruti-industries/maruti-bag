@@ -1,5 +1,10 @@
 import "server-only";
 
+import {
+  MINIMUM_ORDER_QUANTITY,
+  normalizeInventoryColour,
+} from "@/lib/businessRules";
+
 export interface InventoryVariant {
   sku: string;
   colour: string;
@@ -191,6 +196,18 @@ function isProductApiResponse(value: unknown): value is ProductApiResponse {
   );
 }
 
+function applyWebsiteBusinessRules(product: InventoryProduct): InventoryProduct {
+  return {
+    ...product,
+    defaultMoq: MINIMUM_ORDER_QUANTITY,
+    variants: product.variants.map((variant) => ({
+      ...variant,
+      colour: normalizeInventoryColour(variant.colour),
+      moq: MINIMUM_ORDER_QUANTITY,
+    })),
+  };
+}
+
 export async function getInventoryProducts(): Promise<InventoryProduct[]> {
   try {
     const baseUrl = getInventoryApiBaseUrl();
@@ -208,7 +225,7 @@ export async function getInventoryProducts(): Promise<InventoryProduct[]> {
       throw new Error("Inventory products response payload was invalid.");
     }
 
-    return data.products;
+    return data.products.map(applyWebsiteBusinessRules);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
     console.error(`[inventory] Failed to load inventory products: ${message}`);
@@ -234,7 +251,7 @@ export async function getInventoryProduct(slug: string): Promise<InventoryProduc
       throw new Error("Inventory product response payload was invalid.");
     }
 
-    return data.product;
+    return applyWebsiteBusinessRules(data.product);
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
     console.error(`[inventory] Failed to load inventory product for slug "${slug}": ${message}`);
