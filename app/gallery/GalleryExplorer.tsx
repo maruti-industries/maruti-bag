@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Search, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -45,6 +45,9 @@ export default function GalleryExplorer({
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedItemIndex, setSelectedItemIndex] =
     useState<number | null>(null);
+  const lightboxRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const lightboxOpenerRef = useRef<HTMLButtonElement | null>(null);
 
   const filteredItems = useMemo(() => {
     const normalizedSearch = searchQuery.trim().toLowerCase();
@@ -101,15 +104,87 @@ export default function GalleryExplorer({
     return [...sameCategoryItems, ...fallbackItems].slice(0, 3);
   }, [filteredItems, selectedItem]);
 
+  const isLightboxOpen = selectedItemIndex !== null;
+
   useEffect(() => {
-    if (!selectedItem) {
-      document.body.style.overflow = "";
+    if (!isLightboxOpen) {
+      return;
+    }
+
+    const lightbox = lightboxRef.current;
+    const opener = lightboxOpenerRef.current;
+    const previousBodyOverflow = document.body.style.overflow;
+    const backgroundElements: HTMLElement[] = [];
+
+    if (!lightbox) {
       return;
     }
 
     document.body.style.overflow = "hidden";
 
+    let currentElement: HTMLElement = lightbox;
+
+    while (currentElement.parentElement) {
+      const parentElement = currentElement.parentElement;
+
+      Array.from(parentElement.children).forEach((sibling) => {
+        if (
+          sibling instanceof HTMLElement &&
+          sibling !== currentElement &&
+          !sibling.inert
+        ) {
+          sibling.inert = true;
+          backgroundElements.push(sibling);
+        }
+      });
+
+      if (parentElement === document.body) {
+        break;
+      }
+
+      currentElement = parentElement;
+    }
+
+    closeButtonRef.current?.focus();
+
     const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Tab") {
+        const focusableElements = Array.from(
+          lightbox.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          ),
+        ).filter((element) => element.getClientRects().length > 0);
+
+        if (focusableElements.length === 0) {
+          event.preventDefault();
+          lightbox.focus();
+          return;
+        }
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        const activeElement = document.activeElement;
+
+        if (
+          event.shiftKey &&
+          (activeElement === firstElement || !lightbox.contains(activeElement))
+        ) {
+          event.preventDefault();
+          lastElement.focus();
+          return;
+        }
+
+        if (
+          !event.shiftKey &&
+          (activeElement === lastElement || !lightbox.contains(activeElement))
+        ) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+
+        return;
+      }
+
       if (event.key === "Escape") {
         setSelectedItemIndex(null);
         return;
@@ -143,10 +218,26 @@ export default function GalleryExplorer({
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousBodyOverflow;
       window.removeEventListener("keydown", handleKeyDown);
+
+      backgroundElements.forEach((element) => {
+        element.inert = false;
+      });
+
+      if (opener?.isConnected) {
+        opener.focus();
+      }
     };
-  }, [selectedItem, filteredItems.length]);
+  }, [isLightboxOpen, filteredItems.length]);
+
+  const openGalleryItem = (
+    index: number,
+    opener: HTMLButtonElement,
+  ) => {
+    lightboxOpenerRef.current = opener;
+    setSelectedItemIndex(index);
+  };
 
   const showPreviousItem = () => {
     if (selectedItemIndex === null || filteredItems.length === 0) {
@@ -305,7 +396,9 @@ Please share suitable sizes, GSM options, minimum order quantity, printing detai
                 <button
                   type="button"
                   className="gallery-explorer-image-button"
-                  onClick={() => setSelectedItemIndex(index)}
+                  onClick={(event) => {
+                    openGalleryItem(index, event.currentTarget);
+                  }}
                   aria-label={`Open larger preview of ${item.title}`}
                 >
                   <Image
@@ -454,13 +547,16 @@ Please help me with suitable bag type, size, GSM, printing options, minimum orde
 
       {selectedItem && selectedItemIndex !== null && (
         <div
+          ref={lightboxRef}
           className="gallery-lightbox"
           role="dialog"
           aria-modal="true"
           aria-label={`${selectedItem.title} image preview`}
+          tabIndex={-1}
           onClick={() => setSelectedItemIndex(null)}
         >
           <button
+            ref={closeButtonRef}
             type="button"
             className="gallery-lightbox-close"
             onClick={() => setSelectedItemIndex(null)}
