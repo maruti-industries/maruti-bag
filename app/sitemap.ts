@@ -21,6 +21,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
 
     {
+      url: `${WEBSITE_URL}/products`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
+
+    {
       url: `${WEBSITE_URL}/gallery`,
       lastModified: new Date(),
       changeFrequency: "weekly",
