@@ -13744,7 +13744,8 @@ textarea {
   }
 
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2rem !important;
+    line-height: 1 !important;
   }
 
   .hero-trust-line {
