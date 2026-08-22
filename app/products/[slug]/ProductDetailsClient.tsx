@@ -315,25 +315,44 @@ export default function ProductDetailsClient({
     setSelectedColour(currentColourStillAvailable ? selectedColour : nextColourOptions[0] ?? "");
   };
 
+  const quotationDetails = [
+    product.name.trim() ? `Product: ${product.name.trim()}` : null,
+    selectedVariant?.sku?.trim()
+      ? `SKU: ${selectedVariant.sku.trim()}`
+      : null,
+    selectedSize.trim() ? `Required Size: ${selectedSize.trim()}` : null,
+    selectedColour.trim()
+      ? `Selected Colour: ${selectedColour.trim()}`
+      : null,
+    selectedVariant?.gsm ? `GSM: ${selectedVariant.gsm} GSM` : null,
+    `MOQ: ${formatMoqCompact()}`,
+    (selectedVariant?.availability || product.availabilitySummary.publicLabel)
+      .trim()
+      ? `Availability: ${(
+          selectedVariant?.availability ||
+          product.availabilitySummary.publicLabel
+        ).trim()}`
+      : null,
+    selectedVariant?.productionTime?.trim()
+      ? `Production Time: ${selectedVariant.productionTime.trim()}`
+      : null,
+    selectedVariant?.dispatchTime?.trim()
+      ? `Dispatch Time: ${selectedVariant.dispatchTime.trim()}`
+      : null,
+  ].filter((line): line is string => Boolean(line));
+
   const quotationMessage = `Hello Maruti Bag,
 
 I want a quotation for:
 
-Product: ${product.name}
-SKU: ${selectedVariant?.sku ?? ""}
-Required Size: ${selectedSize || ""}
-Selected Colour: ${selectedColour || ""}
-GSM: ${selectedVariant?.gsm ? `${selectedVariant.gsm} GSM` : ""}
-MOQ: ${formatMoqCompact()}
-Availability: ${selectedVariant?.availability || product.availabilitySummary.publicLabel}
-Production Time: ${selectedVariant?.productionTime || ""}
-Dispatch Time: ${selectedVariant?.dispatchTime || ""}
+${quotationDetails.join("\n")}
 
-Quantity:
-Plain or Printed:
-Delivery City:
-
-Please share availability and quotation.`;
+Please confirm:
+• Current availability
+• Price per piece for the minimum order quantity
+• Custom printing options
+• Production and dispatch time
+• Delivery and freight details`;
 
   const formatPrice = (price: number | null) =>
     typeof price === "number" && price > 0
