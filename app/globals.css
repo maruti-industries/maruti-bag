@@ -5822,16 +5822,29 @@ textarea:focus-visible {
    FINAL NAVBAR + BUSINESS STATS FIX
 ========================================= */
 
-/* Remove the large orange box around clicked navbar links */
-.nav-links a:focus,
-.nav-links a:active,
-.nav-links a:focus-visible {
+/* Keep mouse and touch activation clean without suppressing keyboard focus */
+.nav-links a:focus:not(:focus-visible),
+.nav-links a:active {
   outline: none !important;
   box-shadow: none !important;
   border: none !important;
 }
 
-/* Keep only a subtle underline for keyboard focus */
+/* Clear, brand-aligned keyboard focus across all Navbar controls */
+.navbar-logo:focus-visible,
+.nav-links a:focus-visible,
+.quote-btn:focus-visible,
+.navbar-menu-button:focus-visible {
+  outline: 3px solid #ff7a33 !important;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.96) !important;
+}
+
+.navbar-logo:focus-visible {
+  outline-offset: -5px;
+  border-radius: 8px;
+}
+
 .nav-links a:focus-visible::after {
   transform: scaleX(1);
 }
