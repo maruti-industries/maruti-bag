@@ -24,7 +24,7 @@ export default function Home() {
             <p className="hero-label">PREMIUM PACKAGING SOLUTIONS</p>
 
             <h1>
-              Packaging That Makes
+              Packaging That Makes{" "}
               <span>Your Brand Stand Out.</span>
             </h1>
 
