@@ -8200,6 +8200,281 @@ textarea:focus-visible {
   padding: 0 0 96px;
 }
 
+/* =========================================================
+   GALLERY ROUTE LOADING STATE
+========================================================= */
+
+.gallery-loading-page {
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 8% 10%, rgba(255, 90, 0, 0.065), transparent 26%),
+    linear-gradient(180deg, #fbfaf9 0%, #f7f6f4 100%);
+}
+
+.gallery-loading-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.gallery-loading-hero {
+  width: min(960px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 78px 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.gallery-loading-kicker,
+.gallery-loading-heading,
+.gallery-loading-description,
+.gallery-loading-search,
+.gallery-loading-filters span,
+.gallery-loading-results,
+.gallery-loading-card-image,
+.gallery-loading-card-label,
+.gallery-loading-card-title,
+.gallery-loading-card-copy,
+.gallery-loading-card-action {
+  background: linear-gradient(100deg, #ece7e2 25%, #fffaf6 42%, #ece7e2 62%);
+  background-size: 220% 100%;
+  animation: gallery-loading-shimmer 1.45s ease-in-out infinite;
+}
+
+.gallery-loading-kicker {
+  width: 150px;
+  height: 12px;
+  margin-bottom: 5px;
+  border-radius: 999px;
+}
+
+.gallery-loading-heading {
+  width: min(720px, 88%);
+  height: 58px;
+  border-radius: 15px;
+}
+
+.gallery-loading-heading-short {
+  width: min(510px, 66%);
+}
+
+.gallery-loading-description {
+  width: min(610px, 76%);
+  height: 18px;
+  margin-top: 6px;
+  border-radius: 999px;
+}
+
+.gallery-loading-content {
+  width: min(1240px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-bottom: 96px;
+}
+
+.gallery-loading-toolbar {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 28px;
+  padding: 16px 17px 15px;
+  border: 1px solid rgba(224, 218, 212, 0.95);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 14px 36px rgba(20, 20, 20, 0.06);
+}
+
+.gallery-loading-search {
+  width: min(100%, 520px);
+  height: 48px;
+  margin: 0 auto;
+  border-radius: 13px;
+}
+
+.gallery-loading-filters {
+  display: flex;
+  gap: 8px;
+  overflow: hidden;
+  padding: 4px 2px 8px;
+}
+
+.gallery-loading-filters span {
+  width: 96px;
+  height: 36px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+}
+
+.gallery-loading-filters span:nth-child(2n) {
+  width: 118px;
+}
+
+.gallery-loading-results {
+  width: 112px;
+  height: 14px;
+  margin-bottom: 33px;
+  border-radius: 999px;
+}
+
+.gallery-loading-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.gallery-loading-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e5dfda;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(20, 20, 20, 0.065);
+}
+
+.gallery-loading-card-image {
+  width: 100%;
+  aspect-ratio: 1.22 / 1;
+}
+
+.gallery-loading-card-content {
+  padding: 20px;
+}
+
+.gallery-loading-card-label {
+  display: block;
+  width: 82px;
+  height: 10px;
+  margin-bottom: 12px;
+  border-radius: 999px;
+}
+
+.gallery-loading-card-title {
+  width: 72%;
+  height: 22px;
+  margin-bottom: 17px;
+  border-radius: 7px;
+}
+
+.gallery-loading-card-copy {
+  width: 100%;
+  height: 11px;
+  margin-bottom: 9px;
+  border-radius: 999px;
+}
+
+.gallery-loading-card-copy-short {
+  width: 68%;
+}
+
+.gallery-loading-card-action {
+  width: 100%;
+  height: 44px;
+  margin-top: 22px;
+  border-radius: 11px;
+}
+
+@keyframes gallery-loading-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@media (max-width: 1020px) {
+  .gallery-loading-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+}
+
+@media (max-width: 580px) {
+  .gallery-loading-hero {
+    width: calc(100% - 28px);
+    padding: 52px 0 34px;
+    gap: 11px;
+  }
+
+  .gallery-loading-heading {
+    width: 94%;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .gallery-loading-heading-short {
+    width: 68%;
+  }
+
+  .gallery-loading-description {
+    width: 88%;
+    height: 14px;
+  }
+
+  .gallery-loading-content {
+    width: calc(100% - 28px);
+    padding-bottom: 58px;
+  }
+
+  .gallery-loading-toolbar {
+    margin-bottom: 20px;
+    padding: 12px;
+    border-radius: 15px;
+  }
+
+  .gallery-loading-search {
+    height: 46px;
+  }
+
+  .gallery-loading-filters {
+    margin-right: -12px;
+  }
+
+  .gallery-loading-results {
+    margin-bottom: 28px;
+  }
+
+  .gallery-loading-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .gallery-loading-card {
+    border-radius: 18px;
+  }
+
+  .gallery-loading-card-image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .gallery-loading-card-content {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-loading-kicker,
+  .gallery-loading-heading,
+  .gallery-loading-description,
+  .gallery-loading-search,
+  .gallery-loading-filters span,
+  .gallery-loading-results,
+  .gallery-loading-card-image,
+  .gallery-loading-card-label,
+  .gallery-loading-card-title,
+  .gallery-loading-card-copy,
+  .gallery-loading-card-action {
+    animation: none;
+  }
+}
+
 
 /* =========================================================
    STICKY SEARCH + FILTER TOOLBAR
