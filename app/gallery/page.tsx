@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import GalleryExplorer from "./GalleryExplorer";
 
 import { galleryItems as approvedGalleryItems } from "@/app/data/galleryItems";
@@ -46,10 +44,6 @@ export default async function GalleryPage() {
   }
 
   return (
-    <>
-      {/* SAME NAVBAR AS HOME PAGE */}
-      <Navbar />
-
       <main className="gallery-page">
         <section className="gallery-page-hero">
           <p>MARUTI BAG GALLERY</p>
@@ -65,8 +59,5 @@ export default async function GalleryPage() {
 
         <GalleryExplorer items={galleryItems} />
       </main>
-
-      <Footer />
-    </>
   );
 }

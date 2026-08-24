@@ -1,11 +1,9 @@
 "use client";
 
-import Footer from "@/app/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-import Navbar from "@/app/components/Navbar";
 import type { InventoryProduct } from "@/lib/inventory";
 
 type ProductsCatalogProps = {
@@ -52,8 +50,6 @@ export default function ProductsCatalog({
   }, [products, searchTerm, selectedCategory]);
 
   return (
-    <>
-      <Navbar />
       <main className="catalog-page">
         <section className="catalog-hero">
         <p>OUR PRODUCT CATALOGUE</p>
@@ -224,8 +220,6 @@ export default function ProductsCatalog({
         )}
       </section>
     </main>
-  <Footer />
-    </>
   );
 }
 

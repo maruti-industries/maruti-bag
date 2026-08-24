@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import ReusableBopp from "./components/ReusableBopp";
 import BusinessStats from "./components/BusinessStats";
-import Navbar from "./components/Navbar";
 import TrustBar from "./components/TrustBar";
 import Products from "./components/Products";
 import WhyChooseUs from "./components/WhyChooseUs";
@@ -10,14 +9,11 @@ import Gallery from "./components/Gallery";
 import Industries from "./components/Industries";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Footer from "./components/Footer";
 import HeroProductShowcase from "./components/HeroProductShowcase";
 
 export default function Home() {
   return (
     <main>
-      <Navbar />
-
       <section className="hero">
         <HeroProductShowcase>
           <div className="hero-content">
@@ -66,7 +62,6 @@ export default function Home() {
       <WhyChooseUs />
       <BusinessStats />
       <Contact />
-      <Footer />
     </main>
   );
 } 

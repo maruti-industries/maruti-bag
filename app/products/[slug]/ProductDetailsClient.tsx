@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
 import RelatedProducts from "../../components/RelatedProducts";
 import { InventoryProduct, InventoryVariant } from "@/lib/inventory";
 import { formatMoqCompact } from "@/lib/businessRules";
@@ -509,9 +507,6 @@ Please confirm:
   ];
 
   return (
-    <>
-      <Navbar />
-
       <main className="product-detail-page">
         <div className="product-detail-container">
           <div className="product-detail-image">
@@ -834,8 +829,5 @@ Please confirm:
           </section>
         </div>
       </main>
-
-      <Footer />
-    </>
   );
 }

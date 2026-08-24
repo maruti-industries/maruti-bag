@@ -1,13 +1,7 @@
 import Link from "next/link";
 
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-
 export default function NotFound() {
   return (
-    <>
-      <Navbar />
-
       <main className="not-found-page">
         <section className="not-found-content" aria-labelledby="not-found-title">
           <p className="not-found-code">404</p>
@@ -31,8 +25,5 @@ export default function NotFound() {
           </div>
         </section>
       </main>
-
-      <Footer />
-    </>
   );
 }
