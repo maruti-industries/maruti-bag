@@ -1235,10 +1235,6 @@ main {
     padding: 18px 24px;
   }
 
-  .nav-links {
-    display: none;
-  }
-
   .hero {
     flex-direction: column;
     padding: 70px 24px 80px;

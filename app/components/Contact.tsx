@@ -79,10 +79,10 @@ const contactItems: ContactItem[] = [
   },
   {
     title: "Email",
-    value: "info@marutibag.com",
+    value: "marutibagd@gmail.com",
     helper:
       "Share artwork or detailed specifications.",
-    href: "mailto:info@marutibag.com",
+    href: "mailto:marutibagd@gmail.com",
     icon: <Mail aria-hidden="true" />,
     iconClassName: "contact-icon-email",
   },
