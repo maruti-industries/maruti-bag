@@ -14,13 +14,13 @@ export default function Footer() {
             <Link
               href="/"
               className="footer-logo"
-              aria-label="Go to Maruti Bag homepage"
+              aria-label="Go to Maruti Bag Multipack homepage"
             >
               <Image
-                src="/images/Maruti Bag Logo New.png"
-                alt="Maruti Bag"
-                width={170}
-                height={60}
+                src="/images/Maruti Bag Multipack Orange Logo.png"
+                alt="Maruti Bag Multipack"
+                width={517}
+                height={190}
               />
             </Link>
 
@@ -56,7 +56,7 @@ export default function Footer() {
             <h3>Connect With Us</h3>
 
             <div className="footer-contact-list">
-              <a href="tel:+919427171799" aria-label="Call Maruti Bag">
+              <a href="tel:+919427171799" aria-label="Call Maruti Bag Multipack">
                 <span className="footer-contact-icon">
                   <Phone aria-hidden="true" />
                 </span>
@@ -71,7 +71,7 @@ export default function Footer() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Message Maruti Bag on WhatsApp"
+                aria-label="Message Maruti Bag Multipack on WhatsApp"
               >
                 <span className="footer-contact-icon footer-whatsapp-icon">
                   <FaWhatsapp aria-hidden="true" />
@@ -85,7 +85,7 @@ export default function Footer() {
 
               <a
                 href="mailto:marutibagd@gmail.com"
-                aria-label="Email Maruti Bag"
+                aria-label="Email Maruti Bag Multipack"
               >
                 <span className="footer-contact-icon">
                   <Mail aria-hidden="true" />
@@ -101,7 +101,7 @@ export default function Footer() {
                 href="https://www.google.com/maps/search/?api=1&query=17-18%2C+Janta+Bazar%2C+Near+By+Krishna+Circle%2C+Parvat+Patiya%2C+Surat%2C+Gujarat%2C+395010"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Open Maruti Bag location in Google Maps"
+                aria-label="Open Maruti Bag Multipack location in Google Maps"
               >
                 <span className="footer-contact-icon">
                   <MapPin aria-hidden="true" />
@@ -137,7 +137,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="footer-whatsapp-button"
-              aria-label="Get a quote from Maruti Bag on WhatsApp"
+              aria-label="Get a quote from Maruti Bag Multipack on WhatsApp"
             >
               <FaWhatsapp aria-hidden="true" />
               <span>Get Quote on WhatsApp</span>
@@ -151,7 +151,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>© 2026 Maruti Bag. All rights reserved.</p>
+          <p>© 2026 Maruti Bag Multipack. All rights reserved.</p>
 
           <div className="footer-bottom-links">
             <span>Surat, Gujarat</span>

@@ -161,7 +161,7 @@ export default function ProductsCatalog({
                         />
                       ) : (
                         <div className="catalog-card-placeholder">
-                          <span>MARUTI BAG</span>
+                          <span>MARUTI BAG MULTIPACK</span>
                           <strong>Premium Bag Collection</strong>
                         </div>
                       )}

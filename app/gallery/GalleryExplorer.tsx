@@ -275,7 +275,7 @@ export default function GalleryExplorer({
   };
 
   const createWhatsAppLink = (item: GalleryItem) => {
-    const fallbackMessage = `Hello Maruti Bag,
+    const fallbackMessage = `Hello Maruti Bag Multipack,
 
 I am interested in this gallery design:
 
@@ -523,7 +523,7 @@ Please share suitable sizes, GSM options, minimum order quantity, printing detai
 
       <a
         href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-          `Hello Maruti Bag,
+          `Hello Maruti Bag Multipack,
 
 I viewed your gallery and would like a quotation for a customized bag.
 

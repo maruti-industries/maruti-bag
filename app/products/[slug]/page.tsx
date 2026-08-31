@@ -28,7 +28,7 @@ export async function generateMetadata({
       product.seo.description ||
       product.shortDescription ||
       product.detailedDescription ||
-      `Explore ${product.name} in the ${product.category} range from Maruti Bag and view available product options.`,
+      `Explore ${product.name} in the ${product.category} range from Maruti Bag Multipack and view available product options.`,
   };
 }
 

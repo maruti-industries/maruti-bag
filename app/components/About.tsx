@@ -29,14 +29,14 @@ export default function About() {
       <div className="about-container">
         <div className="about-main">
           <div className="about-copy">
-            <p className="about-label">ABOUT MARUTI BAG</p>
+            <p className="about-label">ABOUT MARUTI BAG MULTIPACK</p>
 
             <h2>
               Reliable Packaging, Manufactured for Growing Businesses
             </h2>
 
             <p className="about-description">
-              Maruti Bag is a Surat-based manufacturer of non-woven box bags,
+              Maruti Bag Multipack is a Surat-based manufacturer of non-woven box bags,
               laminated BOPP bags, metallic bags and custom-printed packaging
               solutions.
             </p>

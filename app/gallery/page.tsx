@@ -8,7 +8,7 @@ import { getGalleryItems, type GalleryItem } from "@/lib/gallery";
 export const metadata: Metadata = {
   title: "Product Gallery",
   description:
-    "Browse real Maruti Bag product photos and custom branding ideas for jewellery, fashion, footwear, gifting, retail and other businesses.",
+    "Browse real Maruti Bag Multipack product photos and custom branding ideas for jewellery, fashion, footwear, gifting, retail and other businesses.",
 };
 
 export const runtime = "nodejs";
@@ -46,7 +46,7 @@ export default async function GalleryPage() {
   return (
       <main className="gallery-page">
         <section className="gallery-page-hero">
-          <p>MARUTI BAG GALLERY</p>
+          <p>MARUTI BAG MULTIPACK GALLERY</p>
 
           <h1>Explore Products and Custom Branding Ideas</h1>
 

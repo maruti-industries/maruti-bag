@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Maruti Bag | BOPP Laminated & Non-Woven Bag Manufacturer",
-    template: "%s | Maruti Bag",
+    default: "Maruti Bag Multipack | BOPP Laminated & Non-Woven Bag Manufacturer",
+    template: "%s | Maruti Bag Multipack",
   },
   description:
-    "Maruti Bag is a Surat-based manufacturer of BOPP laminated, metallic laminated and non-woven bags, offering ready stock, custom printing and PAN-India delivery.",
+    "Maruti Bag Multipack is a Surat-based manufacturer of BOPP laminated, metallic laminated and non-woven bags, offering ready stock, custom printing and PAN-India delivery.",
 };
 
 export default function RootLayout({

@@ -339,7 +339,7 @@ export default function ProductDetailsClient({
       : null,
   ].filter((line): line is string => Boolean(line));
 
-  const quotationMessage = `Hello Maruti Bag,
+  const quotationMessage = `Hello Maruti Bag Multipack,
 
 I want a quotation for:
 

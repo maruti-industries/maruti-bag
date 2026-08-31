@@ -74,14 +74,14 @@ main {
 
 .navbar-logo img {
   width: 200px;
-  height: 70px;
+  height: auto;
   object-fit: contain;
   border-radius: 0;
 }
 
 .navbar-scrolled .navbar-logo img {
-  width: 185px;
-  height: 80px;
+  width: 160px;
+  height: auto;
 }
 
 .navbar-logo:hover img {
@@ -5253,10 +5253,17 @@ textarea:focus-visible {
   z-index: 100;
   min-height: 82px;
   padding: 14px clamp(22px, 4vw, 58px);
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  background: rgba(14, 14, 14, 0.94);
+  border-bottom: 1px solid rgba(255, 102, 0, 0.2);
+  background: linear-gradient(
+    90deg,
+    #141414 0%,
+    #1b1816 50%,
+    #141414 100%
+  );
   backdrop-filter: blur(18px);
-  box-shadow: 0 8px 26px rgba(0,0,0,.12);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.24),
+    0 3px 14px rgba(255, 92, 0, 0.07);
 }
 
 .logo img {
@@ -5847,8 +5854,13 @@ textarea:focus-visible {
 
 /* Keep the scrolled navbar clean */
 .navbar-scrolled {
-  background: rgba(12, 12, 12, 0.94) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    90deg,
+    #141414 0%,
+    #1b1816 50%,
+    #141414 100%
+  ) !important;
+  border-bottom: 1px solid rgba(255, 102, 0, 0.2);
 }
 
 /* =========================================
@@ -7282,7 +7294,7 @@ textarea:focus-visible {
 }
 
 .footer-logo img {
-  width: 155px;
+  width: 185px;
   height: auto;
 
   display: block;
@@ -7751,7 +7763,7 @@ textarea:focus-visible {
   }
 
   .footer-logo img {
-    width: 145px;
+    width: 160px;
   }
 
   .footer-cta {
@@ -12010,17 +12022,18 @@ textarea:focus-visible {
   height: auto;
   object-fit: contain;
   display: block;
+  filter: drop-shadow(0 2px 7px rgba(255, 126, 0, 0.12));
 }
 
 @media (max-width: 900px) {
   .navbar-logo-image {
-    width: 155px;
+    width: 165px;
   }
 }
 
 @media (max-width: 600px) {
   .navbar-logo-image {
-    width: 135px;
+    width: 148px;
   }
 }
 
@@ -12802,7 +12815,7 @@ textarea {
   .navbar-logo img,
   .navbar-scrolled .navbar-logo img {
     width: 170px;
-    height: 64px;
+    height: auto;
   }
 
   .nav-links {
@@ -12941,7 +12954,7 @@ textarea {
   .navbar-scrolled .navbar-logo img,
   .navbar-logo-image {
     width: 148px;
-    height: 52px;
+    height: auto;
   }
 
   .navbar-menu-button {
@@ -13262,8 +13275,8 @@ textarea {
   .navbar-logo img,
   .navbar-scrolled .navbar-logo img,
   .navbar-logo-image {
-    width: 132px;
-    height: 48px;
+    width: 148px;
+    height: auto;
   }
 
   .hero,
@@ -13956,8 +13969,8 @@ textarea {
   .navbar-logo img,
   .navbar-scrolled .navbar-logo img,
   .navbar-logo-image {
-    width: 118px;
-    height: 44px;
+    width: 140px;
+    height: auto;
   }
 
   .navbar-menu-button {
@@ -14024,7 +14037,7 @@ textarea {
   .navbar-logo img,
   .navbar-scrolled .navbar-logo img,
   .navbar-logo-image {
-    width: 108px;
+    width: 128px;
   }
 
   .hero h1 {

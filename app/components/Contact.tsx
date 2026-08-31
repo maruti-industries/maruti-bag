@@ -176,7 +176,7 @@ export default function Contact() {
     }
 
     const enquiryMessage = [
-      "New Maruti Bag Website Enquiry",
+      "New Maruti Bag Multipack Website Enquiry",
       "",
       `Customer Name: ${formData.name.trim()}`,
       `Business/Company: ${
@@ -215,7 +215,7 @@ export default function Contact() {
     >
       <div className="contact-container">
         <div className="contact-heading">
-          <p>CONTACT MARUTI BAG</p>
+          <p>CONTACT MARUTI BAG MULTIPACK</p>
 
           <h2>
             Tell Us What Your Business Needs

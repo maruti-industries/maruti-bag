@@ -4,7 +4,7 @@ import Link from "next/link";
 const galleryImages = [
   {
     src: "https://res.cloudinary.com/gzexzrta/image/upload/v1786101625/NA_bottol_green_pxanfz.jpg",
-    alt: "Bottle green BOPP matt laminated bag manufactured by Maruti Bag",
+    alt: "Bottle green BOPP matt laminated bag manufactured by Maruti Bag Multipack",
     title: "BOPP Matt Laminated Bag",
     detail: "Bottle Green",
     category: "Real Product",
@@ -13,7 +13,7 @@ const galleryImages = [
   },
   {
     src: "https://res.cloudinary.com/gzexzrta/image/upload/v1786101629/NA_golden_ovnxdm.jpg",
-    alt: "Golden metallic laminated bag manufactured by Maruti Bag",
+    alt: "Golden metallic laminated bag manufactured by Maruti Bag Multipack",
     title: "Metallic Laminated Bag",
     detail: "Golden",
     category: "Real Product",
@@ -22,7 +22,7 @@ const galleryImages = [
   },
   {
     src: "https://res.cloudinary.com/gzexzrta/image/upload/v1786101628/NF_grey_jvglap.jpg",
-    alt: "Grey BOPP matt laminated bag manufactured by Maruti Bag",
+    alt: "Grey BOPP matt laminated bag manufactured by Maruti Bag Multipack",
     title: "BOPP Matt Laminated Bag",
     detail: "Grey",
     category: "Real Product",
@@ -31,7 +31,7 @@ const galleryImages = [
   },
   {
     src: "https://res.cloudinary.com/gzexzrta/image/upload/v1786351514/NA_dark_blue_oswy1l.jpg",
-    alt: "Dark blue BOPP matt laminated bag manufactured by Maruti Bag",
+    alt: "Dark blue BOPP matt laminated bag manufactured by Maruti Bag Multipack",
     title: "BOPP Matt Laminated Bag",
     detail: "Dark Blue",
     category: "Real Product",
@@ -40,7 +40,7 @@ const galleryImages = [
   },
   {
     src: "https://res.cloudinary.com/gzexzrta/image/upload/v1786101628/NF_rose_gold_cyzjxy.jpg",
-    alt: "Rose gold metallic laminated bag manufactured by Maruti Bag",
+    alt: "Rose gold metallic laminated bag manufactured by Maruti Bag Multipack",
     title: "Metallic Laminated Bag",
     detail: "Rose Gold",
     category: "Real Product",
@@ -49,7 +49,7 @@ const galleryImages = [
   },
   {
     src: "https://res.cloudinary.com/gzexzrta/image/upload/v1786380555/MF_red_tgycnt.jpg",
-    alt: "Red matt metallic bag manufactured by Maruti Bag",
+    alt: "Red matt metallic bag manufactured by Maruti Bag Multipack",
     title: "Matt Metallic Bag",
     detail: "Red",
     category: "Real Product",
@@ -67,7 +67,7 @@ export default function Gallery() {
         <h2>Real Products. Real Finishes.</h2>
 
         <span>
-          Explore actual Maruti Bag products across BOPP matt laminated,
+          Explore actual Maruti Bag Multipack products across BOPP matt laminated,
           metallic laminated and matt metallic finishes.
         </span>
       </div>

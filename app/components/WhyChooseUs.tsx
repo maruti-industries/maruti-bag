@@ -30,7 +30,7 @@ export default function WhyChooseUs() {
     <section className="why-section" id="why-maruti-bag">
       <div className="why-container">
         <div className="why-heading">
-          <p>WHY MARUTI BAG</p>
+          <p>WHY MARUTI BAG MULTIPACK</p>
 
           <h2>Reliable Packaging. Professional Service.</h2>
 

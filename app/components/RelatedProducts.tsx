@@ -75,7 +75,7 @@ export default function RelatedProducts({
                 ) : (
                   <div className="related-product-placeholder" aria-hidden="true">
                     <div className="related-product-placeholder-mark">MB</div>
-                    <strong>MARUTI BAG</strong>
+                    <strong>MARUTI BAG MULTIPACK</strong>
                   </div>
                 )}
               </div>

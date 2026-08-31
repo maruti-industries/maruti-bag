@@ -59,7 +59,7 @@ export default function ProductCard({
             />
           ) : (
             <div className="product-placeholder">
-              <span>MARUTI BAG</span>
+              <span>MARUTI BAG MULTIPACK</span>
               <strong>Product Photo Coming Soon</strong>
             </div>
           )}

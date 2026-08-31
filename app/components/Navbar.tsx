@@ -31,18 +31,18 @@ export default function Navbar() {
   return (
     <header className={`navbar ${isScrolled ? "navbar-scrolled" : ""}`}>
       
-      {/* MARUTI BAG LOGO */}
+      {/* MARUTI BAG MULTIPACK LOGO */}
       <Link
         href="/"
         className="navbar-logo"
         onClick={closeMenu}
-        aria-label="Maruti Bag home"
+        aria-label="Maruti Bag Multipack home"
       >
         <Image
-          src="/images/Maruti Bag Logo New.png"
-          alt="Maruti Bag"
-          width={190}
-          height={58}
+          src="/images/Maruti Bag Multipack Orange Logo.png"
+          alt="Maruti Bag Multipack"
+          width={517}
+          height={190}
           priority
           className="navbar-logo-image"
         />
