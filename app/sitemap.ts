@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 
 import { products } from "./data/products";
 
-const WEBSITE_URL = "https://www.marutibag.com";
+const WEBSITE_URL = "https://marutibagmultipack.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const productPages = products.map((product) => ({

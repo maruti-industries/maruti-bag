@@ -1,13 +1,33 @@
 import "server-only";
 
+import { createPrivateKey } from "node:crypto";
+
 import { JWT } from "google-auth-library";
 
 export type GoogleSheetRow = Record<string, string>;
 
 function cleanEnvValue(value: string | undefined) {
-  return String(value ?? "")
-    .trim()
-    .replace(/^["']|["']$/g, "");
+  const trimmedValue = String(value ?? "").trim();
+  const firstCharacter = trimmedValue.at(0);
+  const lastCharacter = trimmedValue.at(-1);
+  const hasMatchingQuotes =
+    (firstCharacter === '"' && lastCharacter === '"') ||
+    (firstCharacter === "'" && lastCharacter === "'");
+
+  return (hasMatchingQuotes
+    ? trimmedValue.slice(1, -1)
+    : trimmedValue
+  ).trim();
+}
+
+function normalizePrivateKey(value: string | undefined) {
+  return cleanEnvValue(value)
+    .replace(/\\\\r\\\\n/g, "\n")
+    .replace(/\\\\n/g, "\n")
+    .replace(/\\r\\n/g, "\n")
+    .replace(/\\n/g, "\n")
+    .replace(/\r\n/g, "\n")
+    .trim();
 }
 
 function getCredentials() {
@@ -15,17 +35,13 @@ function getCredentials() {
     process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
   );
 
-  const rawPrivateKey = cleanEnvValue(
+  const privateKey = normalizePrivateKey(
     process.env.GOOGLE_SHEETS_PRIVATE_KEY,
   );
 
   const spreadsheetId = cleanEnvValue(
     process.env.GOOGLE_SHEETS_SPREADSHEET_ID,
   );
-
-  const privateKey = rawPrivateKey
-    .replace(/\\n/g, "\n")
-    .trim();
 
   if (!clientEmail) {
     throw new Error("GOOGLE_SHEETS_CLIENT_EMAIL is missing.");
@@ -48,6 +64,17 @@ function getCredentials() {
   if (!privateKey.endsWith("-----END PRIVATE KEY-----")) {
     throw new Error(
       "GOOGLE_SHEETS_PRIVATE_KEY has an invalid ending.",
+    );
+  }
+
+  try {
+    createPrivateKey({
+      key: privateKey,
+      format: "pem",
+    });
+  } catch {
+    throw new Error(
+      "GOOGLE_SHEETS_PRIVATE_KEY is not a valid PEM private key.",
     );
   }
 

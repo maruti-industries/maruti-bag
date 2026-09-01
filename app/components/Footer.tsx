@@ -84,7 +84,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="mailto:marutibagd@gmail.com"
+                href="mailto:marutibagmultipack@gmail.com"
                 aria-label="Email Maruti Bag Multipack"
               >
                 <span className="footer-contact-icon">
@@ -93,7 +93,7 @@ export default function Footer() {
 
                 <span>
                   <small>Email</small>
-                  <strong>marutibagd@gmail.com</strong>
+                  <strong>marutibagmultipack@gmail.com</strong>
                 </span>
               </a>
 

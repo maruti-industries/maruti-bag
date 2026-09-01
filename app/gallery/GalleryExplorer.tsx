@@ -27,7 +27,10 @@ export default function GalleryExplorer({
       new Set(
         items
           .map((item) => item.category.trim())
-          .filter(Boolean),
+          .filter(
+            (category) =>
+              category && category.toLowerCase() !== "real products",
+          ),
       ),
     );
 

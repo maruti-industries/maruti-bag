@@ -2,6 +2,7 @@ export type GalleryItemType = "product" | "inspiration";
 
 export type GalleryCategory =
   | "Real Products"
+  | "BOPP Laminated"
   | "Jewellery"
   | "Fashion"
   | "Footwear"
@@ -31,27 +32,39 @@ export const galleryItems: GalleryItem[] = [
   ===================================================== */
 
   {
-  id: "real-bopp-matt-laminated-bag",
-  title: "BOPP Matt Laminated Bag",
-  category: "Real Products",
-  type: "product",
-  image:
-    "/images/bopp-matt-bag/bopp-matt-laminated-bag-bottle-green.png",
-  relatedProduct: "BOPP Matt Laminated Bag",
-  description:
-    "Real BOPP matt laminated bag in bottle green, suitable for retail stores, garments, gifting and custom branded packaging.",
-  productLink: "/products/bopp-matt-laminated-bag",
-  keywords: [
-    "bopp",
-    "matt laminated",
-    "bottle green",
-    "retail",
-    "garment",
-    "gift",
-    "printed bag",
-    "custom branding",
-  ],
-},
+    id: "baby-pink-bopp-test",
+    title: "Baby Pink BOPP Laminated Bag",
+    category: "BOPP Laminated",
+    type: "product",
+    image:
+      "https://res.cloudinary.com/gzexzrta/image/upload/v1786004514/NF_baby_pink_uys5xh.jpg",
+    relatedProduct: "Baby Pink BOPP Laminated Bag",
+    description:
+      "Baby pink laminated bag available for retail, gifting and custom branding.",
+    productLink: "/products/bopp-matt-laminated-bag",
+    keywords: [],
+  },
+  {
+    id: "real-bopp-matt-laminated-bag",
+    title: "BOPP Matt Laminated Bag",
+    category: "Real Products",
+    type: "product",
+    image: "/images/bopp-matt-laminated-bag.png",
+    relatedProduct: "BOPP Matt Laminated Bag",
+    description:
+      "Real BOPP matt laminated bag in bottle green, suitable for retail stores, garments, gifting and custom branded packaging.",
+    productLink: "/products/bopp-matt-laminated-bag",
+    keywords: [
+      "bopp",
+      "matt laminated",
+      "bottle green",
+      "retail",
+      "garment",
+      "gift",
+      "printed bag",
+      "custom branding",
+    ],
+  },
   {
     id: "real-metallic-laminated-bag",
     title: "Metallic Laminated Bag",
