@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://marutibagmultipack.com"),
   title: {
     default: "Maruti Bag Multipack | BOPP Laminated & Non-Woven Bag Manufacturer",
     template: "%s | Maruti Bag Multipack",

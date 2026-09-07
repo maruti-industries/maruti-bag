@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Products",
   description:
     "Explore BOPP laminated, metallic laminated, matt metallic and non-woven bags manufactured by Maruti Bag Multipack with bulk ordering, custom printing and PAN-India delivery.",
+  alternates: {
+    canonical: "/products",
+  },
 };
 
 export default async function ProductsPage() {

@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Product Gallery",
   description:
     "Browse real Maruti Bag Multipack product photos and custom branding ideas for jewellery, fashion, footwear, gifting, retail and other businesses.",
+  alternates: {
+    canonical: "/gallery",
+  },
 };
 
 export const runtime = "nodejs";

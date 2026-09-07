@@ -29,6 +29,9 @@ export async function generateMetadata({
       product.shortDescription ||
       product.detailedDescription ||
       `Explore ${product.name} in the ${product.category} range from Maruti Bag Multipack and view available product options.`,
+    alternates: {
+      canonical: `/products/${product.slug}`,
+    },
   };
 }
 

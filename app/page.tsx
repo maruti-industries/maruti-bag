@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import ReusableBopp from "./components/ReusableBopp";
@@ -10,6 +11,12 @@ import Industries from "./components/Industries";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import HeroProductShowcase from "./components/HeroProductShowcase";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (
