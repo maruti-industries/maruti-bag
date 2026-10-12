@@ -711,6 +711,13 @@ Never hand exclusive ownership to a marketing platform or agency. Avoid paying f
 
 Future helpers must add concise entries here.
 
+### 2026-10-12 — Dependency security patches
+
+- Updated `next`, `eslint-config-next`, and `@next/third-parties` from 16.3.6 to 16.3.8 while preserving React 19.2.4 and the required Webpack build script.
+- Refreshed the compatible transitive lockfile resolution for `source-map-js` from 1.2.1 to 1.2.2 without adding a direct dependency or override.
+- Confirmed lint, TypeScript validation, and the Next.js Webpack production build pass.
+- `npm audit` still reports five high-severity entries in the development-only ESLint dependency chain; npm's offered remediation is a breaking downgrade, so no forced or major-version change was applied.
+
 ### 2026-10-08 — Permanent handbook created
 
 - Consolidated business, design, architecture, responsive, inventory, SEO, security, Git, and Hostinger decisions from the two main project chats and the earlier audit.
